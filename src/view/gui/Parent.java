@@ -1,11 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package view.gui;
 
-package gui;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
 
-public class Parent {
-
+public abstract class Parent extends JPanel implements ActionListener {
+    protected final Frame frame;
+    
+    public Parent(Frame f) {
+        this.frame = f;
+        
+        setSize(1280, 720);
+        setMinimumSize(new Dimension(1280, 720));
+        setPreferredSize(new Dimension(1280, 720));
+        setBackground(Color.DARK_GRAY);
+        setVisible(true);
+    }
+    
+    protected void swap(JPanel p) {
+        frame.remove(this);
+        frame.add(p);
+        
+        frame.revalidate();
+        frame.repaint();
+    } 
 }
