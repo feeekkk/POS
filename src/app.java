@@ -1,4 +1,4 @@
-import gui.Frame;
+import view.gui.Frame;
 
 public class app {
 

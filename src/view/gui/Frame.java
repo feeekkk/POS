@@ -1,11 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package view.gui;
 
-package gui;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.UIManager;
 
-public class Frame {
+public class Frame extends JFrame {
+    public Frame() {
+        super("Point Of Sales");
+        
+        try {
+            UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        setLayout(null);
+        
+        setSize(1280, 720);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        
+        Login login = new Login(this);
+        
+        add(login);
 
+        validate();
+        repaint();
+    }
 }
