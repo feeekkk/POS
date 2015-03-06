@@ -1,11 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-package gui;
+package view.gui;
 
-public class EmployeeInfo {
+import java.awt.event.ActionEvent;
+
+public class EmployeeInfo extends Parent {
+
+    public EmployeeInfo(Frame f) {
+        super(f, true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
