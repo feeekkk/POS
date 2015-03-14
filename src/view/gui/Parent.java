@@ -29,7 +29,7 @@ public abstract class Parent extends JPanel implements ActionListener {
         setSize(1280, 720);
         setMinimumSize(new Dimension(1280, 720));
         setPreferredSize(new Dimension(1280, 720));
-        setBackground(Color.DARK_GRAY);
+        //setBackground(Color.DARK_GRAY);
         setVisible(true);
     }
     

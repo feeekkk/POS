@@ -3,16 +3,14 @@ package view.gui;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Frame extends JFrame {
     public Frame() {
         super("Point Of Sales");
         
-        try {
-            UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        setLayoutFeel("Nimbus");
         
         setLayout(null);
         
@@ -28,5 +26,22 @@ public class Frame extends JFrame {
 
         validate();
         repaint();
+    }
+    
+    private static void setLayoutFeel(String s) {
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if (s.equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            // If Nimbus is not available, fall back to cross-platform
+            try {
+                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            }
+        }
     }
 }

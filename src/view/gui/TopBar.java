@@ -9,7 +9,7 @@ public class TopBar extends Parent {
 
     public TopBar(Frame f) {
         super(f);
-        setBackground(Color.LIGHT_GRAY);
+        //setBackground(Color.LIGHT_GRAY);
         setSize(1280, 100);
         setMinimumSize(new Dimension(1280, 720));
         setPreferredSize(new Dimension(1280, 720));
