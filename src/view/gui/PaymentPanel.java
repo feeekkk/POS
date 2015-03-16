@@ -1,11 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package view.gui;
 
-package gui;
+import java.awt.event.ActionEvent;
 
-public class PaymentPanel {
+public class PaymentPanel extends Parent {
+    private Button pay;
+    private Transaction t;
 
+    public PaymentPanel(Frame f, Transaction t) {
+        super(f);
+        this.t = t;
+        
+        pay = new Button(this, "Pay", 200, 200, 200, 200);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        
+        if(obj == pay) {
+            swap(t, new Receipt(frame, true));
+        }
+    }
 }

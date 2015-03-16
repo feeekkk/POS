@@ -1,6 +1,6 @@
-
 package view.gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class Dashboard extends Parent {
@@ -8,7 +8,7 @@ public class Dashboard extends Parent {
 
     public Dashboard(Frame f) {
         super(f, true);
-        int width = 300, height = 100, left = 100, right = 500, top = 100, bottom = 500;
+        int width = 300, height = 200, left = 100, right = 800, top = 150, bottom = 400;
         
         transaction = new Button(this, "Transaction", left, top, width, height );
         returnButton = new Button(this, "Return", right, top, width, height);

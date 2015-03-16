@@ -1,7 +1,5 @@
 package view.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -9,6 +7,7 @@ import javax.swing.JPanel;
 public abstract class Parent extends JPanel implements ActionListener {
     protected final Frame frame;
     protected TopBar topBar;
+    private int width = 1280, height = 720;
     
     public Parent(Frame f) {
         this.frame = f;
@@ -18,7 +17,7 @@ public abstract class Parent extends JPanel implements ActionListener {
     public Parent(Frame f, boolean top) {
         this.frame = f;
         if(top) {
-            topBar = new TopBar(f);
+            topBar = new TopBar(f, this);
             add(topBar);
         }
         init();
@@ -26,11 +25,15 @@ public abstract class Parent extends JPanel implements ActionListener {
     
     private void init() {
         setLayout(null);
-        setSize(1280, 720);
-        setMinimumSize(new Dimension(1280, 720));
-        setPreferredSize(new Dimension(1280, 720));
-        //setBackground(Color.DARK_GRAY);
+        resize();
         setVisible(true);
+        validate();
+    }
+    
+    private void resize() {
+        setSize(width, height);
+        setMinimumSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(width, height));
     }
     
     protected void swap(JPanel p) {
@@ -38,5 +41,17 @@ public abstract class Parent extends JPanel implements ActionListener {
         frame.add(p);
         frame.revalidate();
         frame.repaint();
-    } 
+    }
+    
+    protected void swap(JPanel p1, JPanel p2) {
+        frame.remove(p1);
+        frame.add(p2);
+        frame.revalidate();
+        frame.repaint();
+    }
+    
+    protected void halfWidth() {
+        width /= 2;
+        resize();
+    }
 }
