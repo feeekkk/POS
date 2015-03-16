@@ -3,12 +3,19 @@ package view.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
 
 public class TopBar extends Parent {
-    Button dash, logout;
-
-    public TopBar(Frame f) {
+    private Button dash, logout;
+    private JPanel host;
+    
+    public TopBar(Frame f, JPanel host) {
         super(f);
+        this.host = host;
+        init();
+    }
+    
+    private void init() {
         //setBackground(Color.LIGHT_GRAY);
         setSize(1280, 100);
         setMinimumSize(new Dimension(1280, 720));
@@ -23,7 +30,7 @@ public class TopBar extends Parent {
         Object obj = e.getSource();
         
         if(obj == dash) {
-            swap(new Dashboard(frame));
+            swap(host, new Dashboard(frame));
         }
         else if(obj == logout) {
             System.exit(0);
