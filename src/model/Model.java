@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package view;
+package model;
 
-public class EmployeeView {
+public class Model {
 
 }
