@@ -18,7 +18,7 @@ class ItemController extends Controller {
 
     @Override
     protected void displayView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        view.display();
     }
 
     @Override
