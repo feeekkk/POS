@@ -6,6 +6,9 @@
 
 package model;
 
+import java.util.ArrayList;
+
 public class Receipt {
+    private ArrayList<Item> reciept_values;
 
 }
