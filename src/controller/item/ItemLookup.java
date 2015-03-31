@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package controller;
+package controller.item;
 
 public class ItemLookup {
 

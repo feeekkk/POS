@@ -1,7 +1,7 @@
 
 package view.gui;
 
-import controller.EmployeeController;
+import controller.employee.EmployeeController;
 import java.awt.event.ActionEvent;
 
 public class EmployeeInfo extends Parent {
