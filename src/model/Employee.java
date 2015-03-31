@@ -38,6 +38,34 @@ public class Employee extends Model {
     public String getPassword() {
         return password;
     }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @param first the first to set
+     */
+    public void setFirst(String first) {
+        this.first = first;
+    }
+
+    /**
+     * @param last the last to set
+     */
+    public void setLast(String last) {
+        this.last = last;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
     
     
 }
