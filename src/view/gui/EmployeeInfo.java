@@ -1,19 +1,12 @@
 
 package view.gui;
 
-import controller.employee.EmployeeController;
 import java.awt.event.ActionEvent;
 
 public class EmployeeInfo extends Parent {
-    private final EmployeeController controller;
 
     public EmployeeInfo(Frame f) {
         super(f, true);
-        
-        controller = new EmployeeController(1);
-        
-        Thread t = new Thread(controller);
-        t.start();
     }
 
     @Override
