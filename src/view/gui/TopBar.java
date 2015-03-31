@@ -21,8 +21,10 @@ public class TopBar extends Parent {
         setMinimumSize(new Dimension(1280, 720));
         setPreferredSize(new Dimension(1280, 720));
         
-        dash = new Button(this, "Back", 10, 10, 100, 100);
-        logout = new Button(this, "Logout", 1000, 10, 100, 100);
+        int width = 100, height = 50, y = 25;
+        
+        dash = new Button(this, "Back", 100, y, width, height);
+        logout = new Button(this, "Logout", 1000, y, width, height);
     }
 
     @Override

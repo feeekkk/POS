@@ -8,7 +8,7 @@ public class Login extends Parent {
     public Login(Frame f) {
         super(f);
         
-        go = new Button(this, "Go", 100, 100, 100, 100);
+        go = new Button(this, "Login", 100, 100, 100, 100);
     }
 
     @Override
