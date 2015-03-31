@@ -8,7 +8,9 @@ package model;
 
 import java.util.ArrayList;
 
-public class Receipt {
-    private ArrayList<Item> reciept_values;
-
+public class Receipt extends Model{
+   
+   private int reciept_id, total_cost;
+   private  ArrayList<Item> item = new ArrayList<>(); 
+   private Employee employee;
 }
