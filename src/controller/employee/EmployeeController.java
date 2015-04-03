@@ -2,20 +2,22 @@ package controller.employee;
 
 import controller.Controller;
 import model.Employee;
-import view.EmployeeView;
+import view.View;
 
 public class EmployeeController extends Controller {
-    private int id;
     protected final Employee employee;
 
-    public EmployeeController(Employee employee, EmployeeView view) {
-        super(employee, view);
+    public EmployeeController(Employee employee) {
         this.employee = employee;
     }
     
     @Override
     protected void displayView() {
         view.display();
+    }
+    
+    protected void init(View view) {
+        super.init(employee, view);
     }
 
     @Override

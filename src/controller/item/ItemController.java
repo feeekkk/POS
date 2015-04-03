@@ -1,24 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controller.item;
 
 import controller.Controller;
-import model.Model;
+import model.Item;
 import view.View;
 
 class ItemController extends Controller {
+    protected final Item item;
 
-    public ItemController(Model model, View view) {
-        super(model, view);
+    public ItemController(Item item) {
+        this.item = item;
     }
 
     @Override
     protected void displayView() {
         view.display();
+    }
+    
+    protected void init(View view) {
+        super.init(item, view);
     }
 
     @Override

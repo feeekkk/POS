@@ -1,0 +1,18 @@
+package controller.transaction;
+
+import model.Purchase;
+import view.View;
+
+public class PurchaseController extends TransactionController {
+    private final Purchase purchase;
+
+    public PurchaseController(Purchase purchase) {
+        super(purchase);
+        this.purchase = purchase;
+    }
+    
+    @Override
+    protected void init(View view) {
+        init(purchase, view);
+    }
+}

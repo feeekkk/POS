@@ -8,8 +8,14 @@ package model;
 
 public class Item extends Model{
     private String item_name;
-    private String item_id;
+    private int item_id;
     private double item_price;
+    
+    public Item(int id, String name, double price) {
+        this.item_id = id;
+        this.item_name = name;
+        this.item_price = price;
+    }
 
     
     /**
@@ -29,14 +35,14 @@ public class Item extends Model{
     /**
      * @return the item_id
      */
-    public String getItem_id() {
+    public int getItem_id() {
         return item_id;
     }
 
     /**
      * @param item_id the item_id to set
      */
-    public void setItem_id(String item_id) {
+    public void setItem_id(int item_id) {
         this.item_id = item_id;
     }
 

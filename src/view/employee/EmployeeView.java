@@ -1,4 +1,6 @@
-package view;
+package view.employee;
+
+import view.View;
 
 public class EmployeeView extends View{
     private int id;

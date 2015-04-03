@@ -1,21 +1,20 @@
 package controller.employee;
 
 import model.Employee;
-import view.EmployeeView;
+import view.employee.EmployeeView;
 
 public class NameChange extends EmployeeController {
     private String first, last;
 
-    public NameChange(Employee employee, EmployeeView view, String first, String last) {
-        super(employee, view);
+    public NameChange(Employee employee) {
+        super(employee);
         
+        init(new EmployeeView(employee.getId(), employee.getFirst(), employee.getLast()));
     }
     
     @Override
     public void run() {
-        synchronized(employee) {
-            employee.setFirst(first);
-            employee.setLast(last);
-        }
+        employee.setFirst(first);
+        employee.setLast(last);
     }
 }
