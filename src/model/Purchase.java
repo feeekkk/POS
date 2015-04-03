@@ -6,6 +6,6 @@
 
 package model;
 
-public class Purchase {
+public class Purchase extends Transaction {
 
 }

@@ -7,7 +7,7 @@ public abstract class Controller implements Runnable {
     protected View view;
     protected Model model;
     
-    public Controller(Model model, View view) {
+    public void init(Model model, View view) {
         this.view = view;
         this.model = model;
     }

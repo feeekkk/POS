@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
+package view.item;
 
-public class Database {
+public class ItemView {
 
 }

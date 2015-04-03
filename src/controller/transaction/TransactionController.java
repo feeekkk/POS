@@ -7,18 +7,23 @@
 package controller.transaction;
 
 import controller.Controller;
-import model.Model;
+import model.Transaction;
 import view.View;
 
 class TransactionController extends Controller {
+    protected final Transaction transaction;
 
-    public TransactionController(Model model, View view) {
-        super(model, view);
+    public TransactionController(Transaction transaction) {
+        this.transaction = transaction;
     }
 
     @Override
     protected void displayView() {
         view.display();
+    }
+    
+    protected void init(View view) {
+        init(transaction, view);
     }
 
     @Override
