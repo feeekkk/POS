@@ -2,13 +2,9 @@ package dao;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Feek
- */
 public interface Operations {
-    Object getByID();
-    Object getByName();
+    Object getByID(int id);
+    Object getByName(String name);
     ArrayList getAll();
     boolean insert(Object o);
     boolean update(Object o);

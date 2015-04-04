@@ -1,14 +1,17 @@
 package controller.item;
 
 import controller.Controller;
+import dao.ItemDAO;
 import model.Item;
 import view.View;
 
 class ItemController extends Controller {
     protected final Item item;
+    protected final ItemDAO dao;
 
     public ItemController(Item item) {
         this.item = item;
+        this.dao = new ItemDAO();
     }
 
     @Override

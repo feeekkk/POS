@@ -6,12 +6,12 @@ import model.Item;
 public class ItemDAO implements Operations{
 
     @Override
-    public Object getByID() {
+    public Object getByID(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object getByName() {
+    public Object getByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
