@@ -1,6 +1,5 @@
 package controller.item;
 
-import dao.ItemDAO;
 import model.Item;
 
 public class ItemLookup extends ItemController {
@@ -17,6 +16,6 @@ public class ItemLookup extends ItemController {
     }
     
     private Item getItem() {
-        return ItemDAO.getItem(id);
+        return (Item) dao.getByID(id);
     }
 }
