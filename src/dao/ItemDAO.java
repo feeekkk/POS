@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import model.Item;
 
 public class ItemDAO implements Operations{
+    
+    public boolean setPrice(int id, double price) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
     @Override
     public Object getByID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Item(id, "Temp", 69.99);
     }
 
     @Override

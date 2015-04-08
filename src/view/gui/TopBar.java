@@ -35,7 +35,7 @@ public class TopBar extends Parent {
             swap(host, new Dashboard(frame));
         }
         else if(obj == logout) {
-            System.exit(0);
+            this.frame.exit();
         }
     }
 }

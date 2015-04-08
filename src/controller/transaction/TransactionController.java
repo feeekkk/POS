@@ -9,17 +9,20 @@ package controller.transaction;
 import controller.Controller;
 import model.Transaction;
 import view.View;
+import view.gui.Frame;
 
 class TransactionController extends Controller {
     protected final Transaction transaction;
+    protected int id;
 
     public TransactionController(Transaction transaction) {
         this.transaction = transaction;
+        this.id = Frame.requestTransactionID();
     }
 
     @Override
     protected void displayView() {
-        view.display();
+        view.print();
     }
     
     protected void init(View view) {
