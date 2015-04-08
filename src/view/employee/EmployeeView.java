@@ -13,11 +13,7 @@ public class EmployeeView extends View{
     }
 
     @Override
-    public void update() {
-    }
-
-    @Override
-    public void display() {
+    public void print() {
         System.out.println("ID: " + id);
         System.out.println("First: " + first);
         System.out.println("Last: " + last);

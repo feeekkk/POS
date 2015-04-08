@@ -1,0 +1,37 @@
+yo add to this whenever you think of shit that needs done. The things that are on 
+here right now should be done ASAP
+
+Model (Sean)
+* constructors for every model
+* purchase
+* return
+* transaction
+* After done that, wanna work on views or GUI with Tudor?
+
+Controller (Feek)
+* purchases
+* returns
+* transaction
+* 
+
+View (everyone)
+* stop using TempView and write specific views
+
+GUI (Tudor)
+* text field and button for checking out items
+* get started working on basic components each panel should have. IE tables or whatever
+* make shit look not bad (this isn't ASAP)
+
+GUI (everyone)
+* a fuckton of stuff regarding starting the controllers and adding the views and everything
+
+Database (Mike)
+* Make tables. I would just make them based off the models that Sean writes so they
+  match up
+
+DAO (Mike)
+* Start writing methods to interact with the DB. I set up a basic interface that each DAO could implement but up to you
+  how you want to do it. doesnt matter
+
+Server (everyone)
+*

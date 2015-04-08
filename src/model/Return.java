@@ -6,6 +6,6 @@
 
 package model;
 
-public class Return {
+public class Return extends Transaction{
 
 }

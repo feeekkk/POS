@@ -13,7 +13,7 @@ public class EmployeeController extends Controller {
     
     @Override
     protected void displayView() {
-        view.display();
+        view.print();
     }
     
     protected void init(View view) {
