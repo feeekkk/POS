@@ -1,28 +1,36 @@
 package client.controller.item;
 
+import client.controller.Worker;
 import client.model.Item;
-import client.view.item.ItemView;
+import client.view.gui.ItemsPanel;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import server.dao.ItemDAO;
 
-public class ItemLookup extends ItemController {
+public class ItemLookup extends Worker {
     private final int id;
+    private final ItemsPanel panel;
 
-    public ItemLookup(int id) {
+    public ItemLookup(int id, ItemsPanel panel) {
         this.id = id;
-        setComplete(false);
+        this.panel = panel;
     }
-    
+
     @Override
-    public void run() {
-        synchronized(this) {
-            super.item = getItem();
-            init(new ItemView(item.getItem_name(), item.getItem_price()));
-            setComplete(true);
-        }
-        view.print();
-        
+    protected JLabel doInBackground() throws Exception {
+        ItemDAO dao = new ItemDAO();
+        Item item = (Item) dao.getByID(id);
+        JLabel label = new JLabel(item.getItem_name());
+        return label;
     }
     
-    private Item getItem() {
-        return (Item) dao.getByID(id);
+    protected void done() {
+        try {
+            panel.add((JLabel) get());
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(ItemLookup.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
