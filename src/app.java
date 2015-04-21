@@ -1,4 +1,5 @@
-import view.gui.Frame;
+
+import client.view.gui.Frame;
 import java.sql.*;
 
 public class app {
