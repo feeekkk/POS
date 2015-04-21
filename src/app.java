@@ -1,11 +1,19 @@
 
 import client.view.gui.Frame;
 import java.sql.*;
+import javax.swing.SwingUtilities;
 
 public class app {
-
     public static void main(String[] args) {
-        Frame f = new Frame();
+        app a = new app();
+    }
+    
+    private Frame frame;
+    
+    public app() {
+        this.frame = new Frame();
+        initGUI();
+        
         Connection conn = null;
            try
            {
@@ -20,5 +28,9 @@ public class app {
            {
                System.err.println ("Cannot connect to database server");
            }
-       }
+    }
+    
+    public void initGUI() {
+        SwingUtilities.invokeLater(frame);
+    }
 }
