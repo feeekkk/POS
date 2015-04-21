@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class Frame extends JFrame {
+public class Frame extends JFrame implements Runnable {
     
     private final ExecutorService service;
     private static int transactionID;
@@ -23,7 +23,9 @@ public class Frame extends JFrame {
         service = Executors.newFixedThreadPool(cpus);
         
         transactionID = 0;
-        
+    }
+    
+    public void run() {
         initGUI();
     }
     
