@@ -3,14 +3,15 @@ package client.controller.item;
 import client.controller.Worker;
 import client.model.Item;
 import client.gui.ItemsPanel;
+import client.socket.MessageReceiver;
+import client.socket.MessageSender;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import server.dao.ItemDAO;
 
 public class ItemLookup extends Worker {
-    private final int id;
+    private final Integer id;
     private final ItemsPanel panel;
 
     public ItemLookup(int id, ItemsPanel panel) {
@@ -20,8 +21,8 @@ public class ItemLookup extends Worker {
 
     @Override
     protected JLabel doInBackground() throws Exception {
-        ItemDAO dao = new ItemDAO();
-        Item item = (Item) dao.getByID(id);
+        MessageSender.getObjectOutputStream().writeObject(id);
+        Item item = (Item) MessageReceiver.getObjectInputStream().readObject();
         JLabel label = new JLabel(item.getItem_name());
         return label;
     }

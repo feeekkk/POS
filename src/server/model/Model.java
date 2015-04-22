@@ -6,6 +6,8 @@
 
 package server.model;
 
-public class Model {
+import java.io.Serializable;
+
+public class Model implements Serializable {
 
 }

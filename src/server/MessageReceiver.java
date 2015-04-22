@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import server.dao.ItemDAO;
 import server.model.Item;
 
 public class MessageReceiver implements Runnable {
@@ -24,9 +25,13 @@ public class MessageReceiver implements Runnable {
         try {
             Object message;
             while((message = is.readObject()) != null) {
-                if(message instanceof Item) {
-                    // to do
-                    System.out.println("server: item request received");
+                if(message instanceof Integer) {
+                    // all temp
+                    Integer id = (Integer) message;
+                    System.out.println("server: received integer. starting item lookup");
+                    ItemDAO dao = new ItemDAO();
+                    Item item = (Item) dao.getByID(id);
+                    System.out.println("server: item found: " + item.getItem_name());
                 }
             }
         } catch ( IOException | ClassNotFoundException ex) {
