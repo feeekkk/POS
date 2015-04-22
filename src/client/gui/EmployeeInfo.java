@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-package client.view.gui;
+package client.gui;
 
 import java.awt.event.ActionEvent;
 
-public class Return extends Parent {
+public class EmployeeInfo extends Parent {
 
-    public Return(Frame f) {
+    public EmployeeInfo(Frame f) {
         super(f, true);
     }
 

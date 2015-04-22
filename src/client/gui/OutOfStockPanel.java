@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package client.view.gui;
+package client.gui;
 
-public class ViewAllItemsPanel {
+public class OutOfStockPanel {
 
 }
