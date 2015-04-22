@@ -1,5 +1,5 @@
 
-package client.view.gui;
+package client.gui;
 
 import java.awt.event.ActionEvent;
 

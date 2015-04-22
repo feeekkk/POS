@@ -1,5 +1,5 @@
 
-import client.view.gui.Frame;
+import client.gui.Frame;
 import java.sql.*;
 import javax.swing.SwingUtilities;
 

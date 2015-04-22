@@ -2,7 +2,7 @@ package client.controller.item;
 
 import client.controller.Worker;
 import client.model.Item;
-import client.view.gui.ItemsPanel;
+import client.gui.ItemsPanel;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

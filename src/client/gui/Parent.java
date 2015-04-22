@@ -1,4 +1,4 @@
-package client.view.gui;
+package client.gui;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;

@@ -1,4 +1,4 @@
-package client.view.gui;
+package client.gui;
 
 import client.controller.item.ItemLookup;
 import java.awt.event.ActionEvent;
