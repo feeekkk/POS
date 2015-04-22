@@ -1,4 +1,4 @@
-package client.model;
+package mutualModels;
 
 public class Employee extends Model {
     private int id;

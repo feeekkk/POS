@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package client.model;
+package mutualModels;
 
-public class Transaction extends Model {
+public class Purchase extends Transaction {
 
 }

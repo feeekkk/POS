@@ -35,13 +35,21 @@ public class ConnectionStarter {
         System.out.println("client: getting streams... will see success when complete");
         try {
             inputStream = socket.getInputStream();
-            System.out.println("client: got input");
+            System.out.println("client: got input stream");
             outputStream = socket.getOutputStream();
-            System.out.println("client: got output");
+            System.out.println("client: got output  stream");
             objectInputStream = new ObjectInputStream(inputStream);
-            System.out.println("client: got object in");
+            System.out.println("client: got object in stream");
             objectOutputStream = new ObjectOutputStream(outputStream);
-            System.out.println("client: got object out");
+            System.out.println("client: got object out stream");
+            
+            try {
+                // read hello message from client
+                String helloMessage = (String) objectInputStream.readObject();
+                System.out.println("client: received hello message from server: " + helloMessage);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ConnectionStarter.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (IOException ex) {
             Logger.getLogger(ConnectionStarter.class.getName()).log(Level.SEVERE, null, ex);
         }

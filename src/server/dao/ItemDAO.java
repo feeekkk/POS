@@ -1,6 +1,6 @@
 package server.dao;
 
-import client.model.Item;
+import mutualModels.Item;
 import java.util.ArrayList;
 
 public class ItemDAO implements Operations{

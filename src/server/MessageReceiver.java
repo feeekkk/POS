@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import server.dao.ItemDAO;
-import server.model.Item;
+import mutualModels.Item;
 
 public class MessageReceiver implements Runnable {
     private final ObjectInputStream is;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package server.model;
+package mutualModels;
 
 public class Transaction extends Model {
 

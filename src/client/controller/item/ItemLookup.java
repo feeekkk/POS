@@ -1,10 +1,11 @@
 package client.controller.item;
 
 import client.controller.Worker;
-import client.model.Item;
+import mutualModels.Item;
 import client.gui.ItemsPanel;
 import client.socket.MessageReceiver;
 import client.socket.MessageSender;
+import java.io.ObjectInputStream;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +23,10 @@ public class ItemLookup extends Worker {
     @Override
     protected JLabel doInBackground() throws Exception {
         MessageSender.getObjectOutputStream().writeObject(id);
+        ObjectInputStream is = MessageReceiver.getObjectInputStream();
+        System.out.println("client: sent item lookup request to server and waiting for response");
         Item item = (Item) MessageReceiver.getObjectInputStream().readObject();
+        System.out.println("client: received item from server: " + item.getItem_name());
         JLabel label = new JLabel(item.getItem_name());
         return label;
     }

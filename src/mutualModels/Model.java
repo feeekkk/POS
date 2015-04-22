@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package server.model;
+package mutualModels;
 
-public class Purchase extends Transaction {
+import java.io.Serializable;
+
+public class Model implements Serializable {
 
 }

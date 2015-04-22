@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package client.model;
+package mutualModels;
 
 import java.util.ArrayList;
 
