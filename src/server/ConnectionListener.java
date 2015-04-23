@@ -36,7 +36,6 @@ public class ConnectionListener {
     
     private void initializeCommunication(Socket socket) {
         Client client = new Client(socket);
-        server.addClient(client);
         server.sendWelcomeMessage(client);
     }
 }

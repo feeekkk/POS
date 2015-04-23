@@ -3,7 +3,6 @@
 package server;
 
 import server.model.Client;
-import java.util.concurrent.LinkedBlockingQueue;
 import server.model.Request;
 
 public class MainServer {
@@ -11,26 +10,16 @@ public class MainServer {
         MainServer server = new MainServer("localhost", 16801);
     }
     
-    private final LinkedBlockingQueue<Client> clients;
     private final ConnectionListener listener;
     private MessageSender messageSender;
     private RequestProcessor requestProcessor;
     
     public MainServer(String serverName, int port) {
         int maxClients = Integer.MAX_VALUE;
-        this.clients = new LinkedBlockingQueue<>(maxClients);
         this.requestProcessor = new RequestProcessor(this);
         this.messageSender = new MessageSender();
         // dont add any lines after this. the thread hangs in listener
         this.listener = new ConnectionListener(this, port);
-    }
-    
-    public void addClient(Client client) {
-        
-        synchronized(clients) {
-            clients.add(client);
-            //messageSender.updateClients(clients);
-        }
     }
     
     public void sendWelcomeMessage(Client client) {
