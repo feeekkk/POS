@@ -1,6 +1,6 @@
 package client.controller.item;
 
-import client.controller.Worker;
+import client.Workers.Worker;
 import mutualModels.Item;
 import client.gui.ItemsPanel;
 import client.socket.MessageReceiver;

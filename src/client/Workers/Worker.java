@@ -1,4 +1,4 @@
-package client.controller;
+package client.Workers;
 
 import javax.swing.SwingWorker;
 
