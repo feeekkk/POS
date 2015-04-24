@@ -2,6 +2,7 @@ package client.gui;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import mutualModels.Employee;
 
 public class Login extends Parent {
     private Button go;
@@ -28,6 +29,7 @@ public class Login extends Parent {
         Object obj = e.getSource();
         
         if(obj == go) {
+            frame.setEmployee(new Employee(0, "frame first", "frame last", "frame password"));
             swap(new Dashboard(frame));
         }
     }

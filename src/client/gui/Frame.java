@@ -10,11 +10,13 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import mutualModels.Employee;
 
 public class Frame extends JFrame implements Runnable {
     
     private final ExecutorService service;
     private static int transactionID;
+    private Employee employee;
     
     public Frame() {
         super("Point Of Sales");
@@ -33,6 +35,14 @@ public class Frame extends JFrame implements Runnable {
     public void execute(Runnable r) {
         service.execute(r);
         //log("runnable submitted");
+    }
+    
+    public Employee getEmployee() {
+        return employee;
+    }
+    
+    public void setEmployee(Employee e) {
+        this.employee = e;
     }
     
     private void initGUI() {
