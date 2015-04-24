@@ -1,14 +1,26 @@
 package client.gui;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class Login extends Parent {
     private Button go;
+    private JTextField username, password;
     
     public Login(Frame f) {
+        
         super(f);
         
-        go = new Button(this, "Login", 100, 100, 100, 100);
+        username = new JTextField("Username");
+        username.setBounds(250, 100, 200, 45);
+        add(username);
+        
+        
+        password = new JTextField("Password");
+        password.setBounds(250, 150, 200, 45);
+        add(password);
+        
+        go = new Button(this, "Login", 475, 100, 100, 100);
     }
 
     @Override
