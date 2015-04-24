@@ -1,4 +1,4 @@
-package client.controller.item;
+package client.Workers;
 
 import client.Workers.Worker;
 import mutualModels.Item;

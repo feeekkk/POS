@@ -13,7 +13,7 @@ public class RequestProcessor {
     
     public RequestProcessor(MainServer server) {
         this.server = server;
-        int threads = 20;
+        int threads = 5;
         this.service = Executors.newFixedThreadPool(threads);
     }
     

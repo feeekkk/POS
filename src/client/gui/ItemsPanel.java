@@ -1,6 +1,6 @@
 package client.gui;
 
-import client.controller.item.ItemLookup;
+import client.Workers.ItemLookup;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 

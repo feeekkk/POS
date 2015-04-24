@@ -14,7 +14,7 @@ public class MessageSender {
     private final ExecutorService service;
 
     MessageSender() {
-        int numThreads = 20;
+        int numThreads = 5;
         this.service = Executors.newFixedThreadPool(numThreads);
     }
     

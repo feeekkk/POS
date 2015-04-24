@@ -43,7 +43,7 @@ public abstract class Parent extends JPanel implements ActionListener {
         frame.repaint();
     }
     
-    protected void swap(JPanel p1, JPanel p2) {
+    public void swap(JPanel p1, JPanel p2) {
         frame.remove(p1);
         frame.add(p2);
         frame.revalidate();

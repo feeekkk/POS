@@ -1,10 +1,12 @@
 package client.gui;
 
+import client.Workers.PaymentProcessor;
 import java.awt.event.ActionEvent;
+import mutualModels.Purchase;
 
 public class PaymentPanel extends Parent {
-    private Button pay;
-    private Transaction t;
+    private final Button pay;
+    private final Transaction t;
 
     public PaymentPanel(Frame f, Transaction t) {
         super(f);
@@ -18,7 +20,22 @@ public class PaymentPanel extends Parent {
         Object obj = e.getSource();
         
         if(obj == pay) {
-            swap(t, new Receipt(frame, true));
+            // temp. actually need to implement purchases. should have all items, employee, etc.
+            Purchase purchase = new Purchase();
+            // will handle gui update
+            new PaymentProcessor(this, purchase).execute();
         }
+    }
+    
+    public Transaction getTransaction() {
+        return t;
+    }
+    
+    public Frame getFrame() {
+        return frame;
+    }
+    
+    public void setPayment(boolean b) {
+        pay.setEnabled(b);
     }
 }
