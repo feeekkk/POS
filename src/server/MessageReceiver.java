@@ -33,7 +33,6 @@ public class MessageReceiver implements Runnable {
                 if(message instanceof Integer) {
                     request = new Request(client, message);
                     System.out.println("server: Item lookup request received from client: " + message + " | submitting request to main server.");
-                    server.submitRequest(request);
                 }
                 else if(message instanceof Purchase) {
                     request = new Request(client, message);
