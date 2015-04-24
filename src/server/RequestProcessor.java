@@ -3,7 +3,10 @@ package server;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import mutualModels.*;
+import server.dao.EmployeeDAO;
 import server.dao.ItemDAO;
 import server.model.Request;
 
@@ -34,9 +37,14 @@ public class RequestProcessor {
                             server.submitResponse(request);
                         }
                         else if(o instanceof Purchase) {
-                            Purchase purchase = (Purchase) o;
                             System.out.println("server: working on purchase");
-                            System.err.println("server: TO DO: actually do purchase stuff");
+                            Purchase purchase = (Purchase) o;
+                            LinkedBlockingQueue<Item> items = purchase.getItems();
+                            for(Item item : items) {
+                                ItemDAO.reduceQuantity(item.getItem_id(), 1);
+                                EmployeeDAO.increaseSales(item.getItem_price());
+                            }
+                            System.err.println("server: TO DO: finish purchase stuff");
                         }
                         else {
                             System.err.println("server: unknown request type");

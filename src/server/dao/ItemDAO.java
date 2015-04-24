@@ -11,4 +11,8 @@ public class ItemDAO {
     private static Item tempGetByID(int id) {
         return new Item(id, "Temp", 69.99);
     }
+    
+    public static void reduceQuantity(int id, int quantity) {
+        // to do
+    }
 }
