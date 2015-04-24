@@ -6,6 +6,14 @@
 
 package mutualModels;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class Return extends Transaction{
 
+    public Return(LinkedBlockingQueue items, Employee employee, double total){
+        
+        super(items, employee, total);
+        
+    }
+    
 }
