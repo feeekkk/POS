@@ -35,7 +35,7 @@ public class ItemLookup extends Worker {
     protected void done() {
         try {
             Item item = (Item) get();
-            JLabel label = new JLabel(item.getItem_name());
+            JLabel label = new JLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id());
             panel.addLabel(label);
             panel.addItem(item);
         } catch (InterruptedException | ExecutionException ex) {
