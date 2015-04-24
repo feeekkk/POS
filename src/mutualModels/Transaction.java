@@ -14,6 +14,9 @@ public class Transaction extends Model {
     private Employee employee;
     private double total;
 
+    public Transaction(LinkedBlockingQueue items, Employee employee, double total){
+        
+    }
     /**
      * @return the items
      */
