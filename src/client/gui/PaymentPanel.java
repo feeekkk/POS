@@ -2,6 +2,7 @@ package client.gui;
 
 import client.Workers.PaymentProcessor;
 import java.awt.event.ActionEvent;
+import mutualModels.Employee;
 import mutualModels.Purchase;
 
 public class PaymentPanel extends Parent {
@@ -21,7 +22,7 @@ public class PaymentPanel extends Parent {
         
         if(obj == pay) {
             // temp. actually need to implement purchases. should have all items, employee, etc.
-            Purchase purchase = new Purchase();
+            Purchase purchase = new Purchase(t.getItemsPanel().getItems(), new Employee(0, "first", "last", "password"), 69.69);
             // will handle gui update
             new PaymentProcessor(this, purchase).execute();
         }

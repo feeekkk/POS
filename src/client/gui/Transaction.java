@@ -29,4 +29,8 @@ public class Transaction extends Parent{
     public void actionPerformed(ActionEvent e) {
         
     }   
+    
+    public ItemsPanel getItemsPanel() {
+        return items;
+    }
 }

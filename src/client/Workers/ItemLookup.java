@@ -21,19 +21,23 @@ public class ItemLookup extends Worker {
     }
 
     @Override
-    protected JLabel doInBackground() throws Exception {
+    protected Item doInBackground() throws Exception {
         MessageSender.getObjectOutputStream().writeObject(id);
         ObjectInputStream is = MessageReceiver.getObjectInputStream();
         System.out.println("client: sent item lookup request to server and waiting for response");
         Item item = (Item) MessageReceiver.getObjectInputStream().readObject();
         System.out.println("client: received item from server: " + item.getItem_name());
-        JLabel label = new JLabel(item.getItem_name());
-        return label;
+        
+        return item;
     }
     
+    @Override
     protected void done() {
         try {
-            panel.add((JLabel) get());
+            Item item = (Item) get();
+            JLabel label = new JLabel(item.getItem_name());
+            panel.addLabel(label);
+            panel.addItem(item);
         } catch (InterruptedException | ExecutionException ex) {
             Logger.getLogger(ItemLookup.class.getName()).log(Level.SEVERE, null, ex);
         }
