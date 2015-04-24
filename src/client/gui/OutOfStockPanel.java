@@ -6,6 +6,18 @@
 
 package client.gui;
 
-public class OutOfStockPanel {
+import java.awt.event.ActionEvent;
+
+public class OutOfStockPanel extends Parent{
+
+    public OutOfStockPanel(Frame f) {
+        super(f, true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
 }
