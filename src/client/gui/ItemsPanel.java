@@ -47,17 +47,20 @@ public class ItemsPanel extends Parent {
         
         btLabel = new JLabel("Cost: $" + btCost);
         btLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        btLabel.setForeground(Color.WHITE);
         btLabel.setBounds(340, 500, 250, 50);
         add(btLabel);
         
         taxLabel = new JLabel("Tax: $" + tax);
         taxLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        taxLabel.setForeground(Color.WHITE);
         taxLabel.setBounds(340, 550, 250, 50);
         add(taxLabel);
         
         
         totalLabel = new JLabel("Total: $" + totalCost);
         totalLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        totalLabel.setForeground(Color.WHITE);
         totalLabel.setBounds(340, 600, 250, 50);
         add(totalLabel);
     }

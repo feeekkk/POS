@@ -1,5 +1,6 @@
 package client.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -24,6 +25,8 @@ public abstract class Parent extends JPanel implements ActionListener {
     }
     
     private void init() {
+        Color background = new Color(50, 50, 50);
+        setBackground(background);
         setLayout(null);
         resize();
         setVisible(true);

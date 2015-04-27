@@ -16,8 +16,8 @@ public class Transaction extends Parent{
         items.halfWidth();
         pp.halfWidth();
         
-        items.setBackground(Color.red);
-        pp.setBackground(Color.blue);
+        //items.setBackground(Color.red);
+        //pp.setBackground(Color.blue);
         
         setLayout(new BorderLayout());
         

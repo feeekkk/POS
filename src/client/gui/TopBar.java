@@ -16,7 +16,8 @@ public class TopBar extends Parent {
     }
     
     private void init() {
-        //setBackground(Color.LIGHT_GRAY);
+        Color background = new Color(100, 100, 100);
+        setBackground(background);
         setSize(1280, 100);
         setMinimumSize(new Dimension(1280, 720));
         setPreferredSize(new Dimension(1280, 720));
