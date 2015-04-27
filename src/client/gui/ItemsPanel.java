@@ -102,14 +102,8 @@ public class ItemsPanel extends Parent {
         synchronized(items) {
             System.out.println("client: adding item to cart: " + item.getItem_name());
             items.add(item);
-            
-            
-            btCost+=item.getItem_price();
-            tax = btCost*.06;
-            totalCost = btCost + tax;
-            btLabel.setText("Cost: $"+btCost);
-            totalLabel.setText("Total: $" + totalCost);
-            taxLabel.setText("Tax: $"+ tax);
+            double price = item.getItem_price();
+            incrementTotals(price);
         }
     }
     
@@ -117,10 +111,23 @@ public class ItemsPanel extends Parent {
         synchronized(items) {
             System.out.println("client: removing item to cart: " + item.getItem_name());
             items.remove(item);
-            totalCost-=item.getItem_price();
-            totalLabel.setText("Total: $" + totalCost);
-           
+            double price = item.getItem_price();
+            incrementTotals(-price);
         }
+    }
+    
+    private void incrementTotals(double amount) {
+        btCost += amount;
+        tax = calculateTax(btCost);
+        totalCost = btCost + tax;
+        
+        btLabel.setText("Cost: $"+btCost);
+        totalLabel.setText("Total: $" + totalCost);
+        taxLabel.setText("Tax: $"+ tax);
+    }
+    
+    private double calculateTax(double amount) {
+        return amount * .06;
     }
     
     public LinkedBlockingQueue<Item> getItems() {
