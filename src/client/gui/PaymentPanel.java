@@ -56,25 +56,22 @@ public class PaymentPanel extends Parent {
             remove(dcNum);
             remove(dcPin);
             add(ccNum);
-            revalidate();
-            repaint();
+            
         }
         else if(obj == cash){
             remove(ccNum);
             remove(dcNum);
             remove(dcPin);
             add(cashAmt);
-            this.revalidate();
-            this.repaint();
         }
         else if(obj == debit){
             remove(ccNum);
             remove(cashAmt);
             add(dcNum);
             add(dcPin);
-            revalidate();
-            repaint();
         }
+        t.revalidate();
+        t.repaint();
     }
     
     public Transaction getTransaction() {
