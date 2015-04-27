@@ -56,7 +56,7 @@ public class MessageReceiver implements Runnable {
                 // certain types of requests hide in strings
                 else if(message instanceof String) {
                     request = new Request(client, message);
-                    System.out.println("server: received string from client" + message + " | submitting request to main server.");
+                    System.out.println("server: received string from client: " + message + " | submitting request to main server.");
                 }
                 else {
                     System.err.println("server: unknown request type");

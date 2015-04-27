@@ -29,4 +29,13 @@ public class ItemDAO {
         list.add(tempGetByID(3));
         return list;
     }
+    
+    public static LinkedBlockingQueue<Item> retrieveAllOutOfStock() {
+        LinkedBlockingQueue<Item> list = new LinkedBlockingQueue();
+        // to do
+        list.add(tempGetByID(1));
+        list.add(tempGetByID(2));
+        list.add(tempGetByID(3));
+        return list;
+    }
 }

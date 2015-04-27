@@ -88,13 +88,21 @@ public class RequestProcessor {
                         else if(o instanceof String) {
                             System.out.println("server: parsing string to find type of request");
                             String message = (String) o;
+                            LinkedBlockingQueue<Item> items;
                             
                             switch(message) {
                                 case "RETRIEVE-ALL-ITEMS":
                                     System.out.println("server: working on retrieving all items");
-                                    LinkedBlockingQueue items = ItemDAO.retrieveAll();
+                                    items = ItemDAO.retrieveAll();
                                     request.setReturnObject(items);
                                     System.out.println("server: retrieved all items");
+                                    server.submitResponse(request);
+                                    break;
+                                case "RETRIEVE-ALL-OUT-OF-STOCK-ITEMS":
+                                    System.out.println("server: working on retrieving all out of stock items");
+                                    items = ItemDAO.retrieveAllOutOfStock();
+                                    request.setReturnObject(items);
+                                    System.out.println("server: retrieved all out of stock items");
                                     server.submitResponse(request);
                                     break;
                                 default:
