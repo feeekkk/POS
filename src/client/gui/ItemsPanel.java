@@ -1,6 +1,8 @@
 package client.gui;
 
 import client.Workers.ItemLookup;
+import client.Workers.addItemToCart;
+import client.Workers.removeItemFromCart;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,7 @@ public class ItemsPanel extends Parent {
     private int itemX, itemY, itemWidth, itemHeight;
     private final LinkedBlockingQueue<Item> items;
     private JTextArea itemList;
-    private JTextField itemInput;
+    private JTextField addItemInput, voidItemInput;
     private JLabel totalLabel;
     private JLabel taxLabel;
     private JLabel btLabel; //total before tax
@@ -39,11 +41,16 @@ public class ItemsPanel extends Parent {
         //itemList.setBackground(Color.blue);
         add(itemList);
         
-        itemInput = new JTextField("Enter Item #");
-        itemInput.setBounds(190,100,140,50);
-        add(itemInput);
+        addItemInput = new JTextField("Enter Item #");
+        addItemInput.setBounds(190,100,140,50);
+        add(addItemInput);
         
         addItemButton = new Button(this, "add item", 340, 100, 300, 50);
+        
+        voidItemInput = new JTextField("Enter Item #");
+        voidItemInput.setBounds(190,350,140,50);
+        add(voidItemInput);
+        
         voidItemButton = new Button(this, "void item", 340, 350, 300, 50, new Color(231, 76, 60), new Color(217, 30, 24));
         
         btLabel = new JLabel("Cost: $" + btCost);
@@ -71,9 +78,12 @@ public class ItemsPanel extends Parent {
         Object obj = e.getSource();
         
         if(obj == addItemButton) {
-            int id = Integer.parseInt(itemInput.getText());
-            new ItemLookup(id, this).execute();
-            
+            int id = Integer.parseInt(addItemInput.getText());
+            new addItemToCart(id, this).execute();
+        }
+        else if(obj == voidItemButton) {
+            int id = Integer.parseInt(voidItemInput.getText());
+            new removeItemFromCart(id, this).execute();
         }
         
     }
@@ -81,6 +91,11 @@ public class ItemsPanel extends Parent {
     public void addLabel(String label) {
         itemList.append(label);
         
+    }
+    
+    public void addRemovedLabel(String label) {
+        String removedText = " -- REMOVED FROM CART. Item voided -- ";
+        itemList.append(removedText + "\n" + label + removedText);
     }
     
     public void addItem(Item item) {
