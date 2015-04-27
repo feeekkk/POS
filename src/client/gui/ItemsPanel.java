@@ -11,7 +11,7 @@ import mutualModels.Item;
 
 public class ItemsPanel extends Parent {
     private final Transaction t;
-    private final Button b;
+    private final Button addItemButton, voidItemButton;
     private int itemX, itemY, itemWidth, itemHeight;
     private final LinkedBlockingQueue<Item> items;
     private JTextArea itemList;
@@ -43,7 +43,8 @@ public class ItemsPanel extends Parent {
         itemInput.setBounds(190,100,140,50);
         add(itemInput);
         
-        b = new Button(this, "click to generate an item", 340, 100, 300, 50);
+        addItemButton = new Button(this, "add item", 340, 100, 300, 50);
+        voidItemButton = new Button(this, "void item", 340, 350, 300, 50, new Color(231, 76, 60), new Color(217, 30, 24));
         
         btLabel = new JLabel("Cost: $" + btCost);
         btLabel.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -69,7 +70,7 @@ public class ItemsPanel extends Parent {
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
         
-        if(obj == b) {
+        if(obj == addItemButton) {
             int id = Integer.parseInt(itemInput.getText());
             new ItemLookup(id, this).execute();
             
