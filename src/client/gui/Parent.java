@@ -60,4 +60,8 @@ public abstract class Parent extends JPanel implements ActionListener {
     public int getWidth(){
         return width;
     }
+    
+    public Frame getFrame() {
+        return frame;
+    }
 }

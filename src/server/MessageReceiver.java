@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mutualModels.Employee;
 import mutualModels.Purchase;
 import server.model.Request;
 
@@ -30,13 +31,20 @@ public class MessageReceiver implements Runnable {
             Object message;
             Request request = null;
             while((message = is.readObject()) != null) {
+                // integer is used for item lookup for now
                 if(message instanceof Integer) {
                     request = new Request(client, message);
                     System.out.println("server: Item lookup request received from client: " + message + " | submitting request to main server.");
                 }
+                // purchase
                 else if(message instanceof Purchase) {
                     request = new Request(client, message);
                     System.out.println("server: Purchase request received from client: " + message + " | submitting request to main server.");
+                }
+                // employee lookup
+                else if(message instanceof Employee) {
+                    request = new Request(client, message);
+                    System.out.println("server: Employee Lookup request received from client: " + message + " | submitting request to main server.");
                 }
                 else {
                     System.err.println("server: unknown request type");

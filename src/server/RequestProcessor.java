@@ -27,7 +27,7 @@ public class RequestProcessor {
                 public void run() {
                     synchronized(request) {
                         Object o = request.getReceivedObject();
-
+                        // integer is item lookup
                         if(o instanceof Integer) {
                             int id = (int) o;
                             System.out.println("server: working on item lookup");
@@ -36,6 +36,7 @@ public class RequestProcessor {
                             System.out.println("server: found item: " + item.getItem_name() + "and submitting the response to main server");
                             server.submitResponse(request);
                         }
+                        // purchase
                         else if(o instanceof Purchase) {
                             System.out.println("server: working on purchase");
                             Purchase purchase = (Purchase) o;
@@ -54,6 +55,16 @@ public class RequestProcessor {
                             }
                             
                             System.err.println("server: TO DO: finish purchase stuff");
+                        }
+                        // employee lookup
+                        else if(o instanceof Employee) {
+                            System.out.println("server: working on employee lookup");
+                            Employee employee = (Employee) o;
+                            int id = employee.getId();
+                            employee = EmployeeDAO.getEmployeeInfo(id);
+                            request.setReturnObject(employee);
+                            System.out.println("server: found employee with id " + employee.getId());
+                            server.submitResponse(request);
                         }
                         else {
                             System.err.println("server: unknown request type");
