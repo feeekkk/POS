@@ -183,5 +183,9 @@ public class ItemsPanel extends Parent {
             t.getPaymentPanel().setPaymentButtonEnabled(false);
         }
     }
+    
+    public double getTotalCost() {
+        return totalCost;
+    }
 
 }

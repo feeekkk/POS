@@ -44,8 +44,7 @@ public class PaymentPanel extends Parent {
         Object obj = e.getSource();
         
         if(obj == pay) {
-            // temp. actually need to implement purchases. should have all items, employee, etc.
-            Purchase purchase = new Purchase(t.getItemsPanel().getItems(), new Employee(0, "first", "last", "password"), 69.69);
+            Purchase purchase = new Purchase(t.getItemsPanel().getItems(), frame.getEmployee(), t.getItemsPanel().getTotalCost());
             // will handle gui update
             new PaymentProcessor(this, purchase).execute();
         }
