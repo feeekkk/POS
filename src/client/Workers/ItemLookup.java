@@ -1,7 +1,7 @@
 package client.Workers;
 
 import client.gui.ItemsPanel;
-import client.gui.Return;
+import client.gui.ReturnTransaction;
 import client.socket.MessageReceiver;
 import client.socket.MessageSender;
 import java.io.ObjectInputStream;
@@ -10,13 +10,13 @@ import mutualModels.Item;
 public class ItemLookup extends Worker {
     protected final Integer id;
     protected  ItemsPanel panel;
-    protected  Return rPanel;
+    protected  ReturnTransaction rPanel;
 
     public ItemLookup(int id, ItemsPanel panel) {
         this.id = id;
         this.panel = panel;
     }
-    public ItemLookup(int id, Return panel) {
+    public ItemLookup(int id, ReturnTransaction panel) {
         this.id = id;
         this.rPanel = panel;
     }

@@ -28,7 +28,8 @@ public class Receipt extends Parent implements Runnable {
         } while(current <= end);
         
         System.out.println("receipt done");
-        swap(new Transaction(frame));
+        Dashboard dash = new Dashboard(frame);
+        swap(this, dash);
     }
     
     private void displayInfo() {

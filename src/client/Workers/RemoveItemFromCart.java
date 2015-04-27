@@ -7,18 +7,14 @@
 package client.Workers;
 
 import client.gui.ItemsPanel;
-import client.gui.Return;
+import client.gui.ReturnTransaction;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mutualModels.Item;
 
-public class removeItemFromCart extends ItemLookup{
-    public removeItemFromCart(int id, ItemsPanel panel) {
-        super(id, panel);
-    }
-    
-    public removeItemFromCart(int id, Return panel) {
+public class RemoveItemFromCart extends ItemLookup{
+    public RemoveItemFromCart(int id, ItemsPanel panel) {
         super(id, panel);
     }
     
@@ -26,13 +22,7 @@ public class removeItemFromCart extends ItemLookup{
     protected void done() {
         try {
             Item item = (Item) get();
-            if (panel!= null){
-                panel.removeItem(item);
-            }
-            else{
-                String label = item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n";
-                rPanel.addLabel(label);
-            }   
+            panel.removeItem(item);   
         } catch (InterruptedException | ExecutionException ex) {
             Logger.getLogger(ItemLookup.class.getName()).log(Level.SEVERE, null, ex);
         }

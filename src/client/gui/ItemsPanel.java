@@ -1,8 +1,8 @@
 package client.gui;
 
 import client.Workers.ItemLookup;
-import client.Workers.addItemToCart;
-import client.Workers.removeItemFromCart;
+import client.Workers.AddItemToCart;
+import client.Workers.RemoveItemFromCart;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,10 +13,11 @@ import mutualModels.Item;
 //import sun.awt.X11.XConstants;
 
 public class ItemsPanel extends Parent {
-    private final Transaction t;
-    private final Button addItemButton, voidItemButton;
+    private final TransactionHolder holder;
+    
+    private Button addItemButton, voidItemButton;
     private int itemX, itemY, itemWidth, itemHeight;
-    private final LinkedBlockingQueue<Item> items;
+    private LinkedBlockingQueue<Item> items;
     private JTextArea itemList;
     private JTextField addItemInput, voidItemInput;
     private JLabel totalLabel;
@@ -27,9 +28,13 @@ public class ItemsPanel extends Parent {
     private double tax;
     private Integer waiting; // number of item lookups remaining to finish
 
-    public ItemsPanel(Frame f, Transaction t) {
-        super(f);
-        this.t = t;
+    public ItemsPanel(TransactionHolder holder) {
+        super(holder.getFrame());
+        this.holder = holder;
+        init();
+    }
+    
+    public void init() {
         this.items = new LinkedBlockingQueue<>();
         this.waiting = 0;
         itemX = 100;
@@ -87,7 +92,7 @@ public class ItemsPanel extends Parent {
                 waiting++;
                 checkIfPaymentShouldBeEnabled();
             }
-            new addItemToCart(id, this).execute();
+            new AddItemToCart(id, this).execute();
         }
         else if(obj == voidItemButton) {
             int id = Integer.parseInt(voidItemInput.getText());
@@ -95,7 +100,7 @@ public class ItemsPanel extends Parent {
                 waiting++;
                 checkIfPaymentShouldBeEnabled();
             }
-            new removeItemFromCart(id, this).execute();
+            new RemoveItemFromCart(id, this).execute();
         }
         
     }
@@ -182,10 +187,10 @@ public class ItemsPanel extends Parent {
     // accessed from points in which waiting is locked already
     private void checkIfPaymentShouldBeEnabled() {
         if(waiting == 0 && items.isEmpty() == false) {
-            t.getPaymentPanel().setPaymentButtonEnabled(true);
+            holder.setPaymentButtonEnabled(true);
         }
         else {
-            t.getPaymentPanel().setPaymentButtonEnabled(false);
+            holder.setPaymentButtonEnabled(false);
         }
     }
     

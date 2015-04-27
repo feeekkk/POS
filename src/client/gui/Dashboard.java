@@ -21,10 +21,12 @@ public class Dashboard extends Parent {
         Object obj = e.getSource();
         
         if(obj == transaction) {
-            swap(new Transaction(frame));
+            TransactionHolder holder = new TransactionHolder(frame, true);
+            swap(this, holder);
         }
         else if(obj == returnButton) {
-            swap(new Return(frame));
+            TransactionHolder holder = new TransactionHolder(frame, false);
+            swap(this, holder);
         }
         else if(obj == inventory) {
             swap(new InventoryDashboard(frame));
