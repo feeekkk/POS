@@ -33,4 +33,8 @@ public class Transaction extends Parent{
     public ItemsPanel getItemsPanel() {
         return items;
     }
+    
+    public PaymentPanel getPaymentPanel() {
+        return pp;
+    }
 }

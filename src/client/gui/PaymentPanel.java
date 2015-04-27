@@ -34,7 +34,7 @@ public class PaymentPanel extends Parent {
         dcPin = new JTextField("pin");
         dcPin.setBounds(50, 250, 100, 50);
         
-        
+        setPaymentButtonEnabled(false);
         
         
     }
@@ -82,7 +82,7 @@ public class PaymentPanel extends Parent {
         return frame;
     }
     
-    public void setPayment(boolean b) {
+    public void setPaymentButtonEnabled(boolean b) {
         pay.setEnabled(b);
     }
 }

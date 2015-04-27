@@ -25,12 +25,13 @@ public class ItemsPanel extends Parent {
     private double btCost;
     private double totalCost;
     private double tax;
+    private Integer waiting; // number of item lookups remaining to finish
 
     public ItemsPanel(Frame f, Transaction t) {
         super(f);
         this.t = t;
         this.items = new LinkedBlockingQueue<>();
-        
+        this.waiting = 0;
         itemX = 100;
         itemY = 375;
         itemWidth = 200;
@@ -80,10 +81,17 @@ public class ItemsPanel extends Parent {
         
         if(obj == addItemButton) {
             int id = Integer.parseInt(addItemInput.getText());
+            synchronized(waiting) {
+                waiting++;
+            }
             new addItemToCart(id, this).execute();
         }
         else if(obj == voidItemButton) {
             int id = Integer.parseInt(voidItemInput.getText());
+            synchronized(waiting) {
+                waiting++;
+                checkIfPaymentShouldBeEnabled();
+            }
             new removeItemFromCart(id, this).execute();
         }
         
@@ -106,7 +114,13 @@ public class ItemsPanel extends Parent {
             double price = item.getItem_price();
             incrementTotals(price);
         }
+        
         addLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n");
+        
+        synchronized(waiting) {
+            waiting--;
+            checkIfPaymentShouldBeEnabled();
+        }
     }
     
     public void removeItem(Item item) {
@@ -132,7 +146,11 @@ public class ItemsPanel extends Parent {
             else {
                 System.err.println("client: Item not found in cart. Did not remove " + item.getItem_name());
             }
-            
+        }
+        
+        synchronized(waiting) {
+            waiting--;
+            checkIfPaymentShouldBeEnabled();
         }
     }
     
@@ -153,6 +171,16 @@ public class ItemsPanel extends Parent {
     public LinkedBlockingQueue<Item> getItems() {
         synchronized(items) {
             return items;
+        }
+    }
+    
+    // accessed from points in which waiting is locked already
+    private void checkIfPaymentShouldBeEnabled() {
+        if(waiting == 0 && items.isEmpty() == false) {
+            t.getPaymentPanel().setPaymentButtonEnabled(true);
+        }
+        else {
+            t.getPaymentPanel().setPaymentButtonEnabled(false);
         }
     }
 
