@@ -3,10 +3,12 @@ package client.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TopBar extends Parent {
     private Button dash, logout;
+    private JLabel label;
     private JPanel host;
     
     public TopBar(Frame f, JPanel host) {
@@ -26,6 +28,11 @@ public class TopBar extends Parent {
         
         dash = new Button(this, "Back", 100, y, width, height);
         logout = new Button(this, "Logout", 1000, y, width, height);
+        
+        label = new JLabel("Logged in as: " + frame.getEmployee().getFirst() + " " + frame.getEmployee().getLast());
+        label.setForeground(Color.WHITE);
+        label.setBounds(500, y, 300, height);
+        add(label);
     }
 
     @Override

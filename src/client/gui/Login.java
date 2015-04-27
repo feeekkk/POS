@@ -29,7 +29,7 @@ public class Login extends Parent {
         Object obj = e.getSource();
         
         if(obj == go) {
-            frame.setEmployee(new Employee(0, "frame first", "frame last", "frame password"));
+            frame.setEmployee(new Employee(0, "login temp", "employee", "frame password"));
             swap(new Dashboard(frame));
         }
     }
