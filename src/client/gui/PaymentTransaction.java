@@ -9,6 +9,7 @@ public class PaymentTransaction extends Transaction {
     
     public PaymentTransaction(Frame f, TransactionHolder holder) {
         super(f, holder);
+        pay.setText("Purchase");
     }
     
     @Override

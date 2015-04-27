@@ -14,6 +14,7 @@ public class ReturnTransaction extends Transaction {
     
     public ReturnTransaction(Frame f, TransactionHolder holder) {
         super(f, holder);
+        pay.setText("Return");
     }
     
     @Override
