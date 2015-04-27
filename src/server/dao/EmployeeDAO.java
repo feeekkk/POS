@@ -10,4 +10,12 @@ public class EmployeeDAO {
     public static void increaseSales(double amount) {
         // to do
     }
+    
+    public static void getEmployeeInfo(int id) {
+        // to do
+    }
+    
+    public static void updateEmployee(int id) {
+        // to do, will need more parameters
+    }
 }
