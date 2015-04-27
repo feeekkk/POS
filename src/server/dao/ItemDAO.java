@@ -15,4 +15,8 @@ public class ItemDAO {
     public static void reduceQuantity(int id, int quantity) {
         // to do
     }
+    
+    public static void increaseQuantity(int id, int quantity) {
+        // to do
+    }
 }

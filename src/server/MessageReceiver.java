@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import mutualModels.Employee;
 import mutualModels.Purchase;
+import mutualModels.Return;
 import server.model.Request;
 
 public class MessageReceiver implements Runnable {
@@ -45,6 +46,11 @@ public class MessageReceiver implements Runnable {
                 else if(message instanceof Employee) {
                     request = new Request(client, message);
                     System.out.println("server: Employee Lookup request received from client: " + message + " | submitting request to main server.");
+                }
+                // return
+                else if(message instanceof Return) {
+                    request = new Request(client, message);
+                    System.out.println("server: Return request received from client: " + message + " | submitting request to main server.");
                 }
                 else {
                     System.err.println("server: unknown request type");

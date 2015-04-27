@@ -25,6 +25,8 @@ public class ReturnTransaction extends Transaction {
             // will handle gui update
             new ReturnProcessor(holder, return1).execute();
         }
+        
+        super.actionPerformed(e);
     }
 
 }

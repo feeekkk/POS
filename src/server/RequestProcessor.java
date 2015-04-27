@@ -56,6 +56,24 @@ public class RequestProcessor {
                             
                             System.err.println("server: TO DO: finish purchase stuff");
                         }
+                        // return
+                        else if(o instanceof Return) {
+                            System.out.println("server: working on return");
+                            Return return1 = (Return) o;
+                            System.out.println("temp server: getting items");
+                            LinkedBlockingQueue<Item> items = return1.getItems();
+                            System.out.println("temp server: got items. iterating through and updating stats");
+                            if(items == null || items.isEmpty()) {
+                                System.err.println("temp server: there are no items to be iterated..");
+                            }
+                            else {
+                                System.out.println("temp server: is empty check complete. there are items to be worked on");
+                                for(Item item : items) {
+                                    ItemDAO.increaseQuantity(item.getItem_id(), 1);
+                                }
+                            }
+                            System.err.println("server: TO DO: finish return stuff");
+                        }
                         // employee lookup
                         else if(o instanceof Employee) {
                             System.out.println("server: working on employee lookup");

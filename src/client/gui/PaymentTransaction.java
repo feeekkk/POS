@@ -20,5 +20,6 @@ public class PaymentTransaction extends Transaction {
             // will handle gui update
             new PaymentProcessor(holder, purchase).execute();
         }
+        super.actionPerformed(e);
     }
 }
