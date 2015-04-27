@@ -39,11 +39,20 @@ public class RequestProcessor {
                         else if(o instanceof Purchase) {
                             System.out.println("server: working on purchase");
                             Purchase purchase = (Purchase) o;
+                            System.out.println("temp server: getting items");
                             LinkedBlockingQueue<Item> items = purchase.getItems();
-                            for(Item item : items) {
-                                ItemDAO.reduceQuantity(item.getItem_id(), 1);
-                                EmployeeDAO.increaseSales(item.getItem_price());
+                            System.out.println("temp server: got items. iterating through and updating stats");
+                            if(items == null || items.isEmpty()) {
+                                System.err.println("temp server: there are no items to be iterated..");
                             }
+                            else {
+                                System.out.println("temp server: is empty check complete. there are items to be worked on");
+                                for(Item item : items) {
+                                    ItemDAO.reduceQuantity(item.getItem_id(), 1);
+                                    EmployeeDAO.increaseSales(item.getItem_price());
+                                }
+                            }
+                            
                             System.err.println("server: TO DO: finish purchase stuff");
                         }
                         else {

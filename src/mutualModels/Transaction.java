@@ -15,7 +15,9 @@ public class Transaction extends Model {
     private double total;
 
     public Transaction(LinkedBlockingQueue items, Employee employee, double total){
-        
+        this.items = items;
+        this.employee = employee;
+        this.total = total;
     }
     /**
      * @return the items
