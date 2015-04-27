@@ -104,7 +104,7 @@ public class ItemsPanel extends Parent {
     
     public void addRemovedLabel(String label) {
         String removedText = " -- REMOVED FROM CART. Item voided -- ";
-        itemList.append(removedText + "\n" + label + removedText);
+        itemList.append(removedText + "\n" + label + removedText + "\n");
     }
     
     public void addItem(Item item) {
