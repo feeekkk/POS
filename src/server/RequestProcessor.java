@@ -84,6 +84,23 @@ public class RequestProcessor {
                             System.out.println("server: found employee with id " + employee.getId());
                             server.submitResponse(request);
                         }
+                        // certain types of requests hide in strings
+                        else if(o instanceof String) {
+                            System.out.println("server: parsing string to find type of request");
+                            String message = (String) o;
+                            
+                            switch(message) {
+                                case "RETRIEVE-ALL-ITEMS":
+                                    System.out.println("server: working on retrieving all items");
+                                    LinkedBlockingQueue items = ItemDAO.retrieveAll();
+                                    request.setReturnObject(items);
+                                    System.out.println("server: retrieved all items");
+                                    server.submitResponse(request);
+                                    break;
+                                default:
+                                    System.err.println("server: String request not found: " + message);
+                            }
+                        }
                         else {
                             System.err.println("server: unknown request type");
                         }

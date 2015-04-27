@@ -1,5 +1,6 @@
 package server.dao;
 
+import java.util.concurrent.LinkedBlockingQueue;
 import mutualModels.Item;
 
 public class ItemDAO {
@@ -18,5 +19,14 @@ public class ItemDAO {
     
     public static void increaseQuantity(int id, int quantity) {
         // to do
+    }
+    
+    public static LinkedBlockingQueue<Item> retrieveAll() {
+        LinkedBlockingQueue<Item> list = new LinkedBlockingQueue();
+        // to do
+        list.add(tempGetByID(1));
+        list.add(tempGetByID(2));
+        list.add(tempGetByID(3));
+        return list;
     }
 }

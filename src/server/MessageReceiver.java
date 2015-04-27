@@ -30,8 +30,9 @@ public class MessageReceiver implements Runnable {
     public void checkForMessageFromClient() {
         try {
             Object message;
-            Request request = null;
+            
             while((message = is.readObject()) != null) {
+                Request request = null;
                 // integer is used for item lookup for now
                 if(message instanceof Integer) {
                     request = new Request(client, message);
@@ -52,10 +53,17 @@ public class MessageReceiver implements Runnable {
                     request = new Request(client, message);
                     System.out.println("server: Return request received from client: " + message + " | submitting request to main server.");
                 }
+                // certain types of requests hide in strings
+                else if(message instanceof String) {
+                    request = new Request(client, message);
+                    System.out.println("server: received string from client" + message + " | submitting request to main server.");
+                }
                 else {
                     System.err.println("server: unknown request type");
                 }
-                server.submitRequest(request);
+                if(request != null) {
+                    server.submitRequest(request);
+                }
             }
         } catch ( IOException | ClassNotFoundException ex) {
             Logger.getLogger(MessageReceiver.class.getName()).log(Level.SEVERE, null, ex);
