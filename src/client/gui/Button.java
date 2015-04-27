@@ -1,6 +1,7 @@
 package client.gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import javax.swing.JButton;
 
 public class Button extends JButton {
@@ -21,6 +22,7 @@ public class Button extends JButton {
         setBackground(backgroundColor);
         this.setRolloverEnabled(true);
         setVisible(true);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         setBounds(x, y, width, height);
         
