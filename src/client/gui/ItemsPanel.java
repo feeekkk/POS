@@ -6,6 +6,7 @@ import client.Workers.removeItemFromCart;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
 import javax.swing.*;
 import mutualModels.Item;
@@ -105,14 +106,33 @@ public class ItemsPanel extends Parent {
             double price = item.getItem_price();
             incrementTotals(price);
         }
+        addLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n");
     }
     
     public void removeItem(Item item) {
         synchronized(items) {
-            System.out.println("client: removing item to cart: " + item.getItem_name());
-            items.remove(item);
-            double price = item.getItem_price();
-            incrementTotals(-price);
+            System.out.println("client: attempting to remove item from cart: " + item.getItem_name());
+            
+            // iterate through items and remove the first matching id from the cart
+            Iterator<Item> iterator = items.iterator();
+            boolean removed = false;
+            while(iterator.hasNext()) {
+                if(iterator.next().getItem_id() == item.getItem_id()) {
+                    iterator.remove();
+                    System.out.println("client: item successfully removed: " + item.getItem_name());
+                    removed = true;
+                    break;
+                }
+            }
+            if(removed) {
+                double price = item.getItem_price();
+                incrementTotals(-price);
+                addRemovedLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n");
+            }
+            else {
+                System.err.println("client: Item not found in cart. Did not remove " + item.getItem_name());
+            }
+            
         }
     }
     

@@ -27,12 +27,11 @@ public class addItemToCart extends ItemLookup {
     protected void done() {
         try {
             Item item = (Item) get();
-            String label = item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n";
             if (panel!= null){
-            panel.addLabel(label);
-            panel.addItem(item);
+                panel.addItem(item);
             }
             else{
+                String label = item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n";
                 rPanel.addLabel(label);
             }   
         } catch (InterruptedException | ExecutionException ex) {
