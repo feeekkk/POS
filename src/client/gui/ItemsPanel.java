@@ -46,6 +46,7 @@ public class ItemsPanel extends Parent {
         //This will be replaced by a screenshot of item table
         itemList = new JTextArea("Item name \t Price \t item ID \n");
         itemList.setBounds(0,150,this.getWidth(),200);
+        itemList.setEditable(false);
         //itemList.setBackground(Color.blue);
         add(itemList);
         
