@@ -51,9 +51,11 @@ public class ItemsPanel extends Parent {
         
         voidItemInput = new JTextField("Enter Item #");
         voidItemInput.setBounds(190,350,140,50);
+        voidItemInput.setEnabled(false);
         add(voidItemInput);
         
         voidItemButton = new Button(this, "void item", 340, 350, 300, 50, new Color(231, 76, 60), new Color(217, 30, 24));
+        voidItemButton.setEnabled(false);
         
         btLabel = new JLabel("Cost: $" + btCost);
         btLabel.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -113,6 +115,7 @@ public class ItemsPanel extends Parent {
             items.add(item);
             double price = item.getItem_price();
             incrementTotals(price);
+            checkIfVoidShouldBeEnabled();
         }
         
         addLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n");
@@ -142,6 +145,7 @@ public class ItemsPanel extends Parent {
                 double price = item.getItem_price();
                 incrementTotals(-price);
                 addRemovedLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n");
+                checkIfVoidShouldBeEnabled();
             }
             else {
                 System.err.println("client: Item not found in cart. Did not remove " + item.getItem_name());
@@ -184,8 +188,21 @@ public class ItemsPanel extends Parent {
         }
     }
     
+    // accessed from points in which items is locked already
+    private void checkIfVoidShouldBeEnabled() {
+        if(items.isEmpty()) {
+            voidItemButton.setEnabled(false);
+            voidItemInput.setEnabled(false);
+        }
+        else {
+            voidItemButton.setEnabled(true);
+            voidItemInput.setEnabled(true);
+        }
+    }
+    
     public double getTotalCost() {
         return totalCost;
     }
+    
 
 }
