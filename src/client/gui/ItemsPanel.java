@@ -85,6 +85,7 @@ public class ItemsPanel extends Parent {
             int id = Integer.parseInt(addItemInput.getText());
             synchronized(waiting) {
                 waiting++;
+                checkIfPaymentShouldBeEnabled();
             }
             new addItemToCart(id, this).execute();
         }
