@@ -6,6 +6,7 @@ import client.Workers.RemoveItemFromCart;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
 import javax.swing.*;
@@ -168,6 +169,12 @@ public class ItemsPanel extends Parent {
         btCost += amount;
         tax = calculateTax(btCost);
         totalCost = btCost + tax;
+        
+        // format numbers to 2 decimal places
+        btCost = Double.parseDouble(new DecimalFormat("#.##").format(btCost));
+        tax = Double.parseDouble(new DecimalFormat("#.##").format(tax));
+        totalCost = Double.parseDouble(new DecimalFormat("#.##").format(totalCost));
+        
         
         btLabel.setText("Cost: $"+btCost);
         totalLabel.setText("Total: $" + totalCost);
