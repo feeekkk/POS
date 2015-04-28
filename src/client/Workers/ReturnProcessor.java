@@ -26,7 +26,7 @@ public class ReturnProcessor extends Worker {
     @Override
     protected void done() {
         System.out.println("client: sent return to server. swapping to receipt panel");
-        holder.swap(holder, new Receipt(holder.getFrame(), true));
+        holder.swap(holder, new Receipt(holder.getFrame(), true, return1));
     }
 
 }

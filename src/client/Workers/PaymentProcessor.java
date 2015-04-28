@@ -26,6 +26,6 @@ public class PaymentProcessor extends Worker{
     @Override
     protected void done() {
         System.out.println("client: sent purchase to server. swapping to receipt panel");
-        panel.swap(panel, new Receipt(panel.getFrame(), true));
+        panel.swap(panel, new Receipt(panel.getFrame(), true, purchase));
     }
 }
