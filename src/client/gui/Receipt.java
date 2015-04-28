@@ -1,20 +1,25 @@
 package client.gui;
 
 import java.awt.event.ActionEvent;
+import javax.swing.*;
 import mutualModels.Transaction;
 
 public class Receipt extends Parent implements Runnable {
     private final Thread t;
     private long start, current, end = (long) (3 * Math.pow(10, 9));
     private Transaction transaction;
+    private JTextArea paperReciept;
+    
     
     public Receipt(Frame f, boolean top, Transaction transaction) {
         super(f, top);
         this.transaction = transaction;
         
-        // do the gui stuff here ////
-        // can access employee, items, and total through transaction
+        paperReciept = new JTextArea("Reciept \n \n" + "Employee: \n" + transaction.getEmployee().getFirst()
+        + " " + transaction.getEmployee().getLast() + "\n \n \n" + transaction.getTotal());
+        paperReciept.setBounds(this.getWidth()/2-125,this.getHeight()/2-200,250,400);
         
+        add(paperReciept);
         
         
         t = new Thread(this);
