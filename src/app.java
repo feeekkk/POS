@@ -9,19 +9,33 @@ public class app {
         app a = new app();
     }
     
+    private boolean serverOnly = false;
+    private boolean clientOnly = false;
     private Frame frame;
     private final String serverName = "localhost";
     private final int port = 16801;
     
     public app() {
-        /////// TEMPPPPPPPP ////////
-        temp();
+        if(serverOnly) {
+            startServer();
+        }
+        else if(clientOnly) {
+            startClient();
+        }
+        // start server and client
+        else {
+            startServer();
+            startClient();
+        }
+    }
+    
+    private void startClient() {
         this.frame = new Frame();
         establishServerConnection();
         initGUI();
     }
     
-    private void temp() {
+    private void startServer() {
         new Thread(new Runnable() {
             @Override
             public void run() {
