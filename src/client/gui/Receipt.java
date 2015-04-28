@@ -1,5 +1,7 @@
 package client.gui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import mutualModels.Transaction;
@@ -18,7 +20,8 @@ public class Receipt extends Parent implements Runnable {
         paperReciept = new JTextArea("Reciept \n \n" + "Employee: \n" + transaction.getEmployee().getFirst()
         + " " + transaction.getEmployee().getLast() + "\n \n \n" + transaction.getTotal());
         paperReciept.setBounds(this.getWidth()/2-125,this.getHeight()/2-200,250,400);
-        
+        paperReciept.setFont(new Font("Arial", Font.PLAIN, 24));
+        paperReciept.setForeground(Color.CYAN);
         add(paperReciept);
         
         
