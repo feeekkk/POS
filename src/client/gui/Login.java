@@ -33,7 +33,7 @@ public class Login extends Parent {
         if(obj == go) {
             userid = Integer.parseInt(id.getText());
             userpassword = password.getText();
-            EmployeeLookup employeeLookup = new EmployeeLookup(this, userid, userpassword, Employee.sales);
+            EmployeeLookup employeeLookup = new EmployeeLookup(this, userid, userpassword, 0);
             System.out.println("client: Employee ID: "+userid);
             System.out.println("client: Employee Password: "+userpassword);
             employeeLookup.execute();

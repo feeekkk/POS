@@ -3,7 +3,7 @@ package mutualModels;
 public class Employee extends Model {
     private int id;
     private String first, last, password;
-    public static double sales;
+    public double sales;
     private static final long serialVersionUID = 1L;
 
     
