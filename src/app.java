@@ -20,9 +20,9 @@ public class app {
         app a = new app();
     }
     
-    private boolean serverOnly = true;
-    private boolean clientOnly = false;
-    private boolean runTests = false;
+    private boolean serverOnly = false;
+    private boolean clientOnly = true;
+    private boolean runTests = true;
     private Frame frame;
     private final String serverName = "172.20.10.2";
     private final int port = 16801;
@@ -42,9 +42,6 @@ public class app {
             startServer();
             startClient();
             
-            if(runTests) {
-                runTests();
-            }
         }
     }
     
@@ -52,6 +49,12 @@ public class app {
         this.frame = new Frame();
         establishServerConnection();
         initGUI();
+        
+        System.out.println("client: run tests check");
+            if(runTests) {
+                
+                runTests();
+            }
     }
     
     private void startServer() {
@@ -102,7 +105,9 @@ public class app {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        Employee e = new Employee(1, "test first", "test name", "password1", 0);
+        //Employee e = new Employee(1, "test first", "test name", "password1", 0);
+        Employee e = frame.getEmployee();
+        
         try {
             out.writeObject(e);
             e = (Employee) MessageReceiver.getObjectInputStream().readObject();
@@ -146,11 +151,11 @@ public class app {
         
         double totalSales = e.getTotalSales();
         
-        if(totalSales - initTotal-200==0) {
+        if(totalSales - initTotal==0) {
             System.out.println("client: tests correct!");
         }
         else {
-            System.err.println("client: tests incorrect. off by: " + (totalSales - initTotal-200));
+            System.err.println("client: tests incorrect. off by: " + (totalSales - initTotal));
         }
     }
 }
