@@ -92,8 +92,12 @@ public class app {
     }
     
     private void runTests() {
-        System.out.println("beginning tests");
-        
+        System.out.println("client: beginning tests");
+        testPurchases();
+    }
+    
+    private void testPurchases() {
+        System.out.println("client: beginning purchase testing");
         ObjectOutputStream out = MessageSender.getObjectOutputStream();
         
         int numTests = 100;
