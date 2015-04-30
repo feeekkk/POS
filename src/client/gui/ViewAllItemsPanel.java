@@ -27,7 +27,7 @@ import javax.swing.table.TableRowSorter;
 import mutualModels.Item;
 
 public class ViewAllItemsPanel extends Parent {
-    String[] colomnNames = {"Item ID","Item Name", "Price"};
+    String[] colomnNames = {"Item ID","Item Name", "Price", "Quantity"};
     JTextField filter = new JTextField();
     TableRowSorter<TableModel> sorter;
     Button go;
@@ -61,12 +61,13 @@ public class ViewAllItemsPanel extends Parent {
     public void setList(LinkedBlockingQueue<Item> list) {
         Iterator it = list.iterator();
         int i = 0;
-        Object[][] data = new Object[list.size()][3];
+        Object[][] data = new Object[list.size()][4];
         while(it.hasNext()) {
             Item item = (Item) it.next();
             data[i][0]=item.getItem_id();
             data[i][1]= item.getItem_name();
             data[i][2]= item.getItem_price();
+            data[i][3]= item.getItem_quantity();
             
             i++;
             

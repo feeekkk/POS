@@ -1,6 +1,7 @@
 
 package server;
 
+import client.gui.Login;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -78,10 +79,11 @@ public class RequestProcessor {
                         else if(o instanceof Employee) {
                             System.out.println("server: working on employee lookup");
                             Employee employee = (Employee) o;
-                            int id = employee.getId();
+                            System.out.println("EMPLOYEE: "+employee);
+                            int id = employee.getId(Login.userid);
                             employee = EmployeeDAO.getEmployeeInfo(id);
                             request.setReturnObject(employee);
-                            System.out.println("server: found employee with id " + employee.getId());
+                            System.out.println("server: found employee with id " + employee.getId(Login.userid));
                             server.submitResponse(request);
                         }
                         // certain types of requests hide in strings

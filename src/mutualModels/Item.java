@@ -9,12 +9,14 @@ package mutualModels;
 public class Item extends Model{
     private String item_name;
     private int item_id;
+    private int item_quantity;
     private double item_price;
     
-    public Item(int id, String name, double price) {
+    public Item(int id, String name, double price, int quantity) {
         this.item_id = id;
         this.item_name = name;
         this.item_price = price;
+        this.item_quantity = quantity;
     }
 
     
@@ -58,6 +60,18 @@ public class Item extends Model{
      */
     public void setItem_price(double item_price) {
         this.item_price = item_price;
+    }
+    
+    
+    public int getItem_quantity() {
+        return item_quantity;
+    }
+
+    /**
+     * @param item_quantity the item_id to set
+     */
+    public void setItem_quantity(int item_quantity) {
+        this.item_quantity = item_quantity;
     }
 
 }

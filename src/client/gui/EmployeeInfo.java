@@ -11,6 +11,7 @@ public class EmployeeInfo extends Parent {
     private Employee currentEmp;
     private JLabel empName;
     private JLabel empId;
+    private JLabel empSales;
     
 
     public EmployeeInfo(Frame f) {
@@ -23,11 +24,12 @@ public class EmployeeInfo extends Parent {
         empName.setBounds(100, 100, this.getWidth(), 50);
         add(empName);
         
-        empId = new JLabel("Employee ID: "+ currentEmp.getId());
+        empId = new JLabel("Employee ID: "+ currentEmp.getId(Login.userid));
         empId.setFont(new Font("Arial", Font.PLAIN, 24));
         empId.setForeground(Color.WHITE);
         empId.setBounds(100, 150, this.getWidth(), 50);
         add(empId);
+     
         
     }
 

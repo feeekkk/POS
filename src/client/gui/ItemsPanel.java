@@ -28,6 +28,8 @@ public class ItemsPanel extends Parent {
     private double totalCost;
     private double tax;
     private Integer waiting; // number of item lookups remaining to finish
+    
+    public static int itemID;
 
     public ItemsPanel(TransactionHolder holder) {
         super(holder.getFrame());
@@ -44,7 +46,7 @@ public class ItemsPanel extends Parent {
         itemHeight = 12;
         
         //This will be replaced by a screenshot of item table
-        itemList = new JTextArea("Item name \t Price \t item ID \n");
+        itemList = new JTextArea("Item name \t\t Price \t\t item ID \n");
         itemList.setBounds(0,150,this.getWidth(),200);
         itemList.setEditable(false);
         //itemList.setBackground(Color.blue);
@@ -89,12 +91,13 @@ public class ItemsPanel extends Parent {
         Object obj = e.getSource();
         
         if(obj == addItemButton) {
-            int id = Integer.parseInt(addItemInput.getText());
+            itemID = Integer.parseInt(addItemInput.getText());
+            System.out.println("Item Number: "+itemID);
             synchronized(waiting) {
                 waiting++;
                 checkIfPaymentShouldBeEnabled();
             }
-            new AddItemToCart(id, this).execute();
+            new AddItemToCart(itemID, this).execute();
         }
         else if(obj == voidItemButton) {
             int id = Integer.parseInt(voidItemInput.getText());
@@ -126,7 +129,7 @@ public class ItemsPanel extends Parent {
             checkIfVoidShouldBeEnabled();
         }
         
-        addLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t" + item.getItem_id()+"\n");
+        addLabel(item.getItem_name() + "\t" + item.getItem_price() + "\t\t" + item.getItem_id()+"\n");
         
         synchronized(waiting) {
             waiting--;

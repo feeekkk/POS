@@ -23,6 +23,7 @@ public class EmployeeLookup extends Worker {
     private Login panel;
     
     public EmployeeLookup(Login panel, int id, String password) {
+        System.out.println("Employee ID: "+id);
         this.employee = new Employee(id, null, null, password);
         this.panel = panel;
     }
@@ -33,6 +34,7 @@ public class EmployeeLookup extends Worker {
         ObjectInputStream is = MessageReceiver.getObjectInputStream();
         System.out.println("client: waiting for server employee lookup response");
         this.employee = (Employee) is.readObject();
+        System.out.println("EMPLOYEE: "+employee);
         return employee;
     }
     

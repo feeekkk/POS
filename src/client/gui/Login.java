@@ -8,6 +8,8 @@ import mutualModels.Employee;
 public class Login extends Parent {
     private Button go;
     private JTextField id, password;
+    public static int userid;
+    public static String userpassword;
     
     public Login(Frame f) {
         
@@ -29,9 +31,11 @@ public class Login extends Parent {
         Object obj = e.getSource();
         
         if(obj == go) {
-            int idIn = Integer.parseInt(id.getText());
-            String passwordIn = password.getText();
-            EmployeeLookup employeeLookup = new EmployeeLookup(this, idIn, passwordIn);
+            userid = Integer.parseInt(id.getText());
+            userpassword = password.getText();
+            EmployeeLookup employeeLookup = new EmployeeLookup(this, userid, userpassword);
+            System.out.println("Employee ID: "+userid);
+            System.out.println("Employee Password: "+userpassword);
             employeeLookup.execute();
             System.out.println("client: submitting employee lookup");
             // employee lookup complete will handle gui update

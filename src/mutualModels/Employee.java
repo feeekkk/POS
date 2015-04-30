@@ -5,6 +5,7 @@ public class Employee extends Model {
     private String first, last, password;
     
     public Employee(int id, String first, String last, String password) {
+        System.out.println("Employee ID: "+id);
         this.id = id;
         this.first = first;
         this.last = last;
@@ -14,7 +15,8 @@ public class Employee extends Model {
     /**
      * @return the id
      */
-    public int getId() {
+    public int getId(int userid) {
+        id = userid;
         return id;
     }
 

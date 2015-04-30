@@ -17,6 +17,7 @@ public class AddItemToCart extends ItemLookup {
 
     public AddItemToCart(int id, ItemsPanel panel) {
         super(id, panel);
+        //System.out.println("Sending: "+ItemsPanel.itemID);
     }
     
     @Override
