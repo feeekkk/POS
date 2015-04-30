@@ -25,9 +25,8 @@ public class EmployeeDAO {
    static String queryPass;
    static double queryAmount;
     
-   public synchronized static void increaseSales(double amount)
+   public synchronized static void increaseSales(double amount, int id)
     {
-        int id = Login.userid;
         double paidamount = amount;
         Connection conn = null;
         Statement stmt = null;
