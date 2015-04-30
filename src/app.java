@@ -136,6 +136,8 @@ public class app {
         
         if(totalSales - initTotal==0) {
             System.out.println("client: tests correct!");
+            System.out.println("init: " +initTotal);
+            System.out.println("final: " + totalSales);
         }
         else {
             System.err.println("client: tests incorrect. off by: " + (totalSales - initTotal));
