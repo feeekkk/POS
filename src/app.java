@@ -1,8 +1,17 @@
 
 import client.gui.Frame;
 import client.socket.ConnectionStarter;
+import client.socket.MessageSender;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
+import mutualModels.Employee;
+import mutualModels.Item;
+import mutualModels.Purchase;
 import server.MainServer;
 
 public class app {
@@ -33,6 +42,7 @@ public class app {
     
     private boolean serverOnly = false;
     private boolean clientOnly = false;
+    private boolean runTests = true;
     private Frame frame;
     private final String serverName = "localhost";
     private final int port = 16801;
@@ -51,6 +61,10 @@ public class app {
             //System.out.println("Connection: " + con);
             startServer();
             startClient();
+            
+            if(runTests) {
+                runTests();
+            }
         }
     }
     
@@ -75,5 +89,48 @@ public class app {
     
     private void initGUI() {
         SwingUtilities.invokeLater(frame);
+    }
+    
+    private void runTests() {
+        System.out.println("beginning tests");
+        
+        ObjectOutputStream out = MessageSender.getObjectOutputStream();
+        
+        int numTests = 100;
+        int numOtherClientsRunningSameTest = 0;
+
+        // lets submit 1000 purchases of 2 items
+        LinkedBlockingQueue<Item> list = new LinkedBlockingQueue<>();
+        list.add(new Item(1, "", 1.00, 1));
+        list.add(new Item(2, "", 1.00, 1));
+        
+        Employee e = new Employee(1, "test first", "test name", "pass");
+        
+       double initTotal = 0;
+        
+        
+        while(numTests >= 0) {
+            
+            Purchase purchase = new Purchase(list, e, 2.00);
+
+            try {
+                out.writeObject(purchase);
+            } catch (IOException ex) {
+                Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            numTests--;
+        }
+        
+        System.out.println("testing finished... compiling results");
+        
+        double totalSales = 0;
+        
+        if(totalSales - (numTests * 2) == initTotal) {
+            System.out.println("tests correct!");
+        }
+        else {
+            System.err.println("tests incorrect. off by: " + (totalSales - (numTests * 2)));
+        }
     }
 }
