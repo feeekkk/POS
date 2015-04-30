@@ -19,8 +19,7 @@ public class Employee extends Model {
     /**
      * @return the id
      */
-    public int getId(int userid) {
-        id = userid;
+    public int getId() {
         return id;
     }
 
