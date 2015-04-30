@@ -1,6 +1,7 @@
 
 import client.gui.Frame;
 import client.socket.ConnectionStarter;
+import client.socket.MessageReceiver;
 import client.socket.MessageSender;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -15,29 +16,8 @@ import mutualModels.Purchase;
 import server.MainServer;
 
 public class app {
-    public static void main(String[] args) throws Exception {
-        {    
-        Connection con = null;
-            try {
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                con = DriverManager.getConnection("jdbc:mysql://localhost:8889/POS",
-                        "root", "root");
-                if (!con.isClosed()) {
-                    //System.out.println("Successfully connected to "
-                            //+ "MySQL server using TCP/IP...");
-                    app a = new app();
-                }
-            } catch (Exception e) {
-                System.err.println("Exception: " + e.getMessage());
-            } finally {
-                try {
-                    if (con != null) {
-                        con.close();
-                    }
-                } catch (SQLException e) {
-                }
-            }
-        }
+    public static void main(String[] args) throws Exception {    
+        app a = new app();
     }
     
     private boolean serverOnly = false;
@@ -94,6 +74,14 @@ public class app {
     private void runTests() {
         System.out.println("client: beginning tests");
         testPurchases();
+        
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("testing over");
     }
     
     private void testPurchases() {
@@ -101,16 +89,25 @@ public class app {
         ObjectOutputStream out = MessageSender.getObjectOutputStream();
         
         int numTests = 100;
-        int numOtherClientsRunningSameTest = 0;
+        int numClientsRunningTests = 1;
 
         // lets submit 1000 purchases of 2 items
         LinkedBlockingQueue<Item> list = new LinkedBlockingQueue<>();
         list.add(new Item(1, "", 1.00, 1));
         list.add(new Item(2, "", 1.00, 1));
         
-        Employee e = new Employee(1, "test first", "test name", "pass");
+        Employee e = new Employee(1, "test first", "test name", "password");
+        try {
+            out.writeObject(e);
+            e = (Employee) MessageReceiver.getObjectInputStream().readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-       double initTotal = 0;
+        
+       double initTotal = e.getTotalSales();
         
         
         while(numTests >= 0) {
@@ -126,15 +123,18 @@ public class app {
             numTests--;
         }
         
-        System.out.println("testing finished... compiling results");
+        System.out.println("client: testing finished... compiling results");
         
-        double totalSales = 0;
+        out.writeObject(e);
+        e = (Employee) MessageReceiver.getObjectInputStream().readObject();
         
-        if(totalSales - (numTests * 2) == initTotal) {
-            System.out.println("tests correct!");
+        double totalSales = e.getTotalSales();
+        
+        if((totalSales - (numTests * 2)) == (initTotal * numTests)) {
+            System.out.println("client: tests correct!");
         }
         else {
-            System.err.println("tests incorrect. off by: " + (totalSales - (numTests * 2)));
+            System.err.println("client: tests incorrect. off by: " + (totalSales / numClientsRunningTests - (numTests * 2)));
         }
     }
 }
