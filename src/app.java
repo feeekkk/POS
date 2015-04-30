@@ -96,6 +96,12 @@ public class app {
         list.add(new Item(1, "", 1.00, 1));
         list.add(new Item(2, "", 1.00, 1));
         
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         Employee e = new Employee(1, "test first", "test name", "password");
         try {
             out.writeObject(e);
