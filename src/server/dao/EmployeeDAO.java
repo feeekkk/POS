@@ -174,7 +174,7 @@ public class EmployeeDAO {
             System.exit(0);
         }
         //System.out.println("END");
-    return new Employee(id, userFN, userLN, queryPass);
+    return new Employee(id, userFN, userLN, queryPass, queryAmount);
     }
     
     public static void updateEmployee(int id) {

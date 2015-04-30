@@ -3,13 +3,15 @@ package mutualModels;
 public class Employee extends Model {
     private int id;
     private String first, last, password;
+    public static double sales;
     
-    public Employee(int id, String first, String last, String password) {
+    public Employee(int id, String first, String last, String password, double sales) {
         System.out.println("Employee ID: "+id);
         this.id = id;
         this.first = first;
         this.last = last;
         this.password = password;
+        this.sales = sales;
     }
 
     /**
@@ -40,6 +42,10 @@ public class Employee extends Model {
     public String getPassword() {
         return password;
     }
+    
+    public double getSales(){
+        return sales;
+    }
 
     /**
      * @param id the id to set
@@ -67,6 +73,9 @@ public class Employee extends Model {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+    public void setSales(double sales){
+        this.sales = sales;
     }
     
     

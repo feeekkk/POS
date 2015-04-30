@@ -22,9 +22,9 @@ public class EmployeeLookup extends Worker {
     private Employee employee;
     private Login panel;
     
-    public EmployeeLookup(Login panel, int id, String password) {
+    public EmployeeLookup(Login panel, int id, String password, double sales) {
         System.out.println("Employee ID: "+id);
-        this.employee = new Employee(id, null, null, password);
+        this.employee = new Employee(id, null, null, password, sales);
         this.panel = panel;
     }
 
