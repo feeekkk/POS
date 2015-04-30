@@ -102,7 +102,7 @@ public class app {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        Employee e = new Employee(1, "test first", "test name", "password");
+        Employee e = new Employee(1, "test first", "test name", "password", 0);
         try {
             out.writeObject(e);
             e = (Employee) MessageReceiver.getObjectInputStream().readObject();
@@ -113,7 +113,7 @@ public class app {
         }
         
         
-       double initTotal = e.getTotalSales();
+       double initTotal = e.getSales();
         
         
         while(numTests >= 0) {
@@ -130,11 +130,17 @@ public class app {
         }
         
         System.out.println("client: testing finished... compiling results");
+        try {
+            out.writeObject(e);
+            e = (Employee) MessageReceiver.getObjectInputStream().readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        out.writeObject(e);
-        e = (Employee) MessageReceiver.getObjectInputStream().readObject();
         
-        double totalSales = e.getTotalSales();
+        double totalSales = e.getSales();
         
         if((totalSales - (numTests * 2)) == (initTotal * numTests)) {
             System.out.println("client: tests correct!");
