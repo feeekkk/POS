@@ -38,11 +38,11 @@ public class EmployeeDAO {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
+            System.out.println("DB: Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
+            System.out.println("DB: Creating statement...");
             stmt = conn.createStatement();
       
             ResultSet rs = stmt.executeQuery(query);
@@ -58,7 +58,7 @@ public class EmployeeDAO {
                 
 
                 //Display values
-                System.out.print("ID: " + userid);
+                System.out.print("DB: ID: " + userid);
                 System.out.print(", First: " + userFN);
                 System.out.println(", Last: " + userLN);
                 System.out.println(", Password: " + queryPass);
@@ -67,9 +67,9 @@ public class EmployeeDAO {
             }
             double increaseAmount = paidamount + queryAmount;
             
-        System.out.println("NEW AMOUNT: " + increaseAmount);
+        System.out.println("DB: NEW AMOUNT: " + increaseAmount);
         query = "UPDATE Employee set emp_TotalSale = "+ increaseAmount+" where emp_ID = "+id;
-        System.out.println("Executing" + query);
+        System.out.println("DB: Executing" + query);
         stmt.executeUpdate(query);
             //STEP 6: Clean-up environment
             rs.close(); 
@@ -109,13 +109,13 @@ public class EmployeeDAO {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
+            System.out.println("DB: Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
-            System.out.println("User ID is: "+id);
-            System.out.println("User Password is: "+password);
+            System.out.println("DB: Creating statement...");
+            System.out.println("DB: User ID is: "+id);
+            System.out.println("DB: User Password is: "+password);
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
@@ -130,7 +130,7 @@ public class EmployeeDAO {
                 
 
                 //Display values
-                System.out.print("ID: " + userid);
+                System.out.print("DB: ID: " + userid);
                 System.out.print(", First: " + userFN);
                 System.out.println(", Last: " + userLN);
                 System.out.println(", Password: " + queryPass);
@@ -164,14 +164,14 @@ public class EmployeeDAO {
             }//end finally try
         }//end try
         if ((password.equals(queryPass))) {
-               System.out.print("USER IS LOGGING IN...");
+               System.out.print("DB: USER IS LOGGING IN...");
         } 
         else{
-            System.out.print("NO USER WITH THIS LOGIN...");
+            System.out.print("DB: NO USER WITH THIS LOGIN...");
             System.exit(0);
         }
         if(userFN == null){
-            System.out.print("NO USER WITH THIS LOGIN...");
+            System.out.print("DB: NO USER WITH THIS LOGIN...");
             System.exit(0);
         }
         //System.out.println("END");
