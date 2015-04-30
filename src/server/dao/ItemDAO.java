@@ -24,7 +24,7 @@ public class ItemDAO {
         Connection conn = null;
         Statement stmt = null;
         
-        String query = "SELECT In_item, In_Description, In_Price from Inventory where In_item ="+id;
+        String query = "SELECT In_item, In_Description, In_Price, In_Quantity from Inventory where In_item ="+id;
         
         try {
             //STEP 2: Register JDBC driver
@@ -47,11 +47,14 @@ public class ItemDAO {
                 itemID = rs.getInt("In_item");
                 itemPrice = rs.getDouble("In_Price");
                 itemDesc = rs.getString("In_Description");
+                itemQuantity = rs.getInt("In_Quantity");
+                        
 
                 //Display values
-                System.out.print("ID: " + itemID);
+                System.out.print("DB: ID: " + itemID);
                 System.out.print(", Price: " + itemPrice);
                 System.out.println(", Description: " + itemDesc);
+                System.out.println(", Quantity: " + itemQuantity);
                 
                 
             }
@@ -117,7 +120,7 @@ public class ItemDAO {
                 itemQuantity = rs.getInt("In_Quantity");
 
                 //Display values
-                System.out.print("ID: " + itemID);
+                System.out.print("DB: ID: " + itemID);
                 System.out.print(", Price: " + itemPrice);
                 System.out.println(", Description: " + itemDesc);
                 System.out.println(", Quantity: " + itemQuantity);
