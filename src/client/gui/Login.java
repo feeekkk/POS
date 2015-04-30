@@ -34,8 +34,8 @@ public class Login extends Parent {
             userid = Integer.parseInt(id.getText());
             userpassword = password.getText();
             EmployeeLookup employeeLookup = new EmployeeLookup(this, userid, userpassword, Employee.sales);
-            System.out.println("Employee ID: "+userid);
-            System.out.println("Employee Password: "+userpassword);
+            System.out.println("client: Employee ID: "+userid);
+            System.out.println("client: Employee Password: "+userpassword);
             employeeLookup.execute();
             System.out.println("client: submitting employee lookup");
             // employee lookup complete will handle gui update
