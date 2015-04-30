@@ -28,7 +28,8 @@ public class AddItemToCart extends ItemLookup {
             System.out.println("client: adding item with id:" + item.getItem_id());
             panel.addItem(item);
         } catch (InterruptedException | ExecutionException ex) {
-            Logger.getLogger(ItemLookup.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ItemLookup.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("item lookup failed");
         }
     }
 
