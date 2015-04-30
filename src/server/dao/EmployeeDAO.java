@@ -9,6 +9,7 @@ package server.dao;
 import client.gui.Login;
 import java.sql.*;
 import mutualModels.Employee;
+import server.model.Request;
 
 public class EmployeeDAO {
             // JDBC driver name and database URL
@@ -97,9 +98,11 @@ public class EmployeeDAO {
         }//end try
     }
    
-    public static Employee getEmployeeInfo(int id) {
+    public static Employee getEmployeeInfo(int id, String password) {
         System.out.println("ID: "+id);
-        String password = Login.userpassword;
+        
+        //Object o = request.getReceivedObject();
+        String userpassword = password;
         Connection conn = null;
         Statement stmt = null;
         
@@ -116,7 +119,7 @@ public class EmployeeDAO {
             //STEP 4: Execute a query
             System.out.println("Check: Creating statement...");
             System.out.println("Check: User ID is: "+id);
-            System.out.println("Check: User Password is: "+password);
+            System.out.println("Check: User Password is: "+userpassword);
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 

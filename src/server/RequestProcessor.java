@@ -80,7 +80,7 @@ public class RequestProcessor {
                             System.out.println("server: working on employee lookup");
                             Employee employee = (Employee) o;
                             System.out.println("EMPLOYEE: "+employee);                      
-                            employee = EmployeeDAO.getEmployeeInfo(employee.getId());
+                            employee = EmployeeDAO.getEmployeeInfo(employee.getId(),employee.getPassword());
                             request.setReturnObject(employee);
                             System.out.println("server: found employee with id " + employee.getId());
                             server.submitResponse(request);
