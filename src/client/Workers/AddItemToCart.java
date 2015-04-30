@@ -23,7 +23,9 @@ public class AddItemToCart extends ItemLookup {
     @Override
     protected void done() {
         try {
+            
             Item item = (Item) get();
+            System.out.println("client: adding item with id:" + item.getItem_id());
             panel.addItem(item);
         } catch (InterruptedException | ExecutionException ex) {
             Logger.getLogger(ItemLookup.class.getName()).log(Level.SEVERE, null, ex);
