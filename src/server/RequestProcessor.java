@@ -51,7 +51,7 @@ public class RequestProcessor {
                                 System.out.println("temp server: is empty check complete. there are items to be worked on");
                                 for(Item item : items) {
                                     ItemDAO.reduceQuantity(item.getItem_id(), 1);
-                                    EmployeeDAO.increaseSales(item.getItem_price());
+                                    EmployeeDAO.increaseSales(item.getItem_price(),purchase.getEmployee().getId());
                                 }
                             }
                             
