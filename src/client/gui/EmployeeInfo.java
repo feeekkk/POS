@@ -24,7 +24,7 @@ public class EmployeeInfo extends Parent {
         empName.setBounds(100, 100, this.getWidth(), 50);
         add(empName);
         
-        empId = new JLabel("Employee ID: "+ currentEmp.getId(Login.userid));
+        empId = new JLabel("Employee ID: "+ currentEmp.getId());
         empId.setFont(new Font("Arial", Font.PLAIN, 24));
         empId.setForeground(Color.WHITE);
         empId.setBounds(100, 150, this.getWidth(), 50);
