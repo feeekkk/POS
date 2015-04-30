@@ -24,7 +24,8 @@ public class EmployeeDAO {
    static String queryPass;
    static double queryAmount;
     
-   public static void increaseSales(double amount) {
+   public synchronized static void increaseSales(double amount)
+    {
         int id = Login.userid;
         double paidamount = amount;
         Connection conn = null;
@@ -95,8 +96,8 @@ public class EmployeeDAO {
             }//end finally try
         }//end try
     }
- 
-    public static Employee getEmployeeInfo(int id) {
+   
+    public synchronized static Employee getEmployeeInfo(int id) {
         String password = Login.userpassword;
         Connection conn = null;
         Statement stmt = null;

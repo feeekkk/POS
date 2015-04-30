@@ -84,7 +84,7 @@ public class app {
         System.out.println("testing over");
     }
     
-    private void testPurchases() {
+    private void testPurchases(){
         System.out.println("client: beginning purchase testing");
         ObjectOutputStream out = MessageSender.getObjectOutputStream();
         
@@ -102,7 +102,7 @@ public class app {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        Employee e = new Employee(1, "test first", "test name", "password", 0);
+        Employee e = new Employee(1, "test first", "test name", "password1", 0);
         try {
             out.writeObject(e);
             e = (Employee) MessageReceiver.getObjectInputStream().readObject();
@@ -113,10 +113,10 @@ public class app {
         }
         
         
-       double initTotal = e.getSales();
+       double initTotal = e.getTotalSales();
         
         
-        while(numTests >= 0) {
+        while(numTests > 0) {
             
             Purchase purchase = new Purchase(list, e, 2.00);
 
@@ -128,7 +128,11 @@ public class app {
             
             numTests--;
         }
-        
+         try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.out.println("client: testing finished... compiling results");
         try {
             out.writeObject(e);
@@ -140,13 +144,13 @@ public class app {
         }
         
         
-        double totalSales = e.getSales();
+        double totalSales = e.getTotalSales();
         
-        if((totalSales - (numTests * 2)) == (initTotal * numTests)) {
+        if(totalSales - initTotal-200==0) {
             System.out.println("client: tests correct!");
         }
         else {
-            System.err.println("client: tests incorrect. off by: " + (totalSales / numClientsRunningTests - (numTests * 2)));
+            System.err.println("client: tests incorrect. off by: " + (totalSales - initTotal-200));
         }
     }
 }

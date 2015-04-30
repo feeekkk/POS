@@ -43,7 +43,7 @@ public class Employee extends Model {
         return password;
     }
     
-    public double getSales(){
+    public double getTotalSales(){
         return sales;
     }
 
@@ -74,7 +74,7 @@ public class Employee extends Model {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setSales(double sales){
+    public void setTotalSales(double sales){
         this.sales = sales;
     }
     
