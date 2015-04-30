@@ -27,7 +27,7 @@ public class ItemLookup extends Worker {
         ObjectInputStream is = MessageReceiver.getObjectInputStream();
         System.out.println("client: sent item lookup request to server and waiting for response");
         Object o = MessageReceiver.getObjectInputStream().readObject();
-        System.out.println("object type received: " + o.getClass().getName());
+        System.out.println("object type received: " + o.getClass().getName() + " | " + o);
         Item item = (Item) o;
         System.out.println("client: received item from server: " + item.getItem_name());
         
