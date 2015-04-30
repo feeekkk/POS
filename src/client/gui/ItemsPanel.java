@@ -199,9 +199,11 @@ public class ItemsPanel extends Parent {
     private void checkIfPaymentShouldBeEnabled() {
         if(waiting == 0 && items.isEmpty() == false) {
             holder.setPaymentButtonEnabled(true);
+            addItemButton.setEnabled(true);
         }
         else {
             holder.setPaymentButtonEnabled(false);
+            addItemButton.setEnabled(false);
         }
     }
     
