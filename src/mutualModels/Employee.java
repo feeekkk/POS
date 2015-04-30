@@ -4,6 +4,8 @@ public class Employee extends Model {
     private int id;
     private String first, last, password;
     public static double sales;
+    private static final long serialVersionUID = 1L;
+
     
     public Employee(int id, String first, String last, String password, double sales) {
         System.out.println("Employee ID: "+id);

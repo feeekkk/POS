@@ -20,9 +20,9 @@ public class app {
         app a = new app();
     }
     
-    private boolean serverOnly = false;
+    private boolean serverOnly = true;
     private boolean clientOnly = false;
-    private boolean runTests = true;
+    private boolean runTests = false;
     private Frame frame;
     private final String serverName = "localhost";
     private final int port = 16801;

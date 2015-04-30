@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
+import java.net.InetAddress;
 import java.util.logging.Logger;
 
 public class ConnectionStarter {
@@ -15,9 +16,16 @@ public class ConnectionStarter {
     private MessageSender sender;
     
     public ConnectionStarter(String serverName, int port) {
+        InetAddress ip;
+        String hostname;
         try {
             System.out.println("client: Connecting to server " + serverName +  " on port: " + port);
             this.socket = new Socket(serverName, port);
+            ip = InetAddress.getLocalHost();
+            hostname = ip.getHostName();
+            System.out.println("Your current Hostname : " + hostname);
+            System.out.println("Your current IP address : " + ip);
+            System.out.println(socket.getInetAddress().getCanonicalHostName());
             System.out.println("client: Just connected to " + socket.getRemoteSocketAddress());
         } catch (IOException ex) {
             Logger.getLogger(ConnectionStarter.class.getName()).log(Level.SEVERE, null, ex);

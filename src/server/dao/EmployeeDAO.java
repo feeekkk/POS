@@ -97,7 +97,7 @@ public class EmployeeDAO {
         }//end try
     }
    
-    public synchronized static Employee getEmployeeInfo(int id) {
+    public static Employee getEmployeeInfo(int id) {
         String password = Login.userpassword;
         Connection conn = null;
         Statement stmt = null;
