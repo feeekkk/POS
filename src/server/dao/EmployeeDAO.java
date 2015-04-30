@@ -98,6 +98,7 @@ public class EmployeeDAO {
     }
    
     public static Employee getEmployeeInfo(int id) {
+        System.out.println("ID: "+id);
         String password = Login.userpassword;
         Connection conn = null;
         Statement stmt = null;
@@ -113,9 +114,9 @@ public class EmployeeDAO {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             //STEP 4: Execute a query
-            System.out.println("DB: Creating statement...");
-            System.out.println("DB: User ID is: "+id);
-            System.out.println("DB: User Password is: "+password);
+            System.out.println("Check: Creating statement...");
+            System.out.println("Check: User ID is: "+id);
+            System.out.println("Check: User Password is: "+password);
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 

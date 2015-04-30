@@ -8,7 +8,7 @@ public class Employee extends Model {
 
     
     public Employee(int id, String first, String last, String password, double sales) {
-        System.out.println("Employee ID: "+id);
+        System.out.println("Employee: Employee ID: "+id);
         this.id = id;
         this.first = first;
         this.last = last;
