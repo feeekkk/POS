@@ -20,7 +20,7 @@ public class ItemDAO {
    static String itemDesc;
    static int itemQuantity;
 
-    public static Item getByID(int id) {
+    public synchronized static Item getByID(int id) {
         Connection conn = null;
         Statement stmt = null;
         
