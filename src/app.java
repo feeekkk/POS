@@ -79,12 +79,6 @@ public class app {
         System.out.println("client: beginning tests");
         testPurchases();
         
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         System.out.println("testing over");
     }
     
@@ -106,25 +100,7 @@ public class app {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Employee e = new Employee(1, "test first", "test name", "password1", 0);
         Employee e = frame.getEmployee();
-        
-        try {
-            out.writeObject(e);
-            ObjectInputStream is = MessageReceiver.getObjectInputStream();
-            Object o;
-            
-            while((o = is.readObject()) != null ) {
-                e = (Employee) MessageReceiver.getObjectInputStream().readObject();
-            }
-            
-        } catch (IOException ex) {
-            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
        double initTotal = e.getTotalSales();
         
         
