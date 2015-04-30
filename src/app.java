@@ -4,6 +4,7 @@ import client.socket.ConnectionStarter;
 import client.socket.MessageReceiver;
 import client.socket.MessageSender;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.sql.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -20,9 +21,9 @@ public class app {
         app a = new app();
     }
     
-    private boolean serverOnly = true;
-    private boolean clientOnly = false;
-    private boolean runTests = false;
+    private boolean serverOnly = false;
+    private boolean clientOnly = true;
+    private boolean runTests = true;
     private Frame frame;
     private final String serverName = "172.20.10.2";
     private final int port = 16801;
@@ -110,7 +111,13 @@ public class app {
         
         try {
             out.writeObject(e);
-            e = (Employee) MessageReceiver.getObjectInputStream().readObject();
+            ObjectInputStream is = MessageReceiver.getObjectInputStream();
+            Object o;
+            
+            while((o = is.readObject()) != null ) {
+                e = (Employee) MessageReceiver.getObjectInputStream().readObject();
+            }
+            
         } catch (IOException ex) {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
